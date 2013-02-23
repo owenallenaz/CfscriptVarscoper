@@ -24,32 +24,53 @@ functionBody
 statement
 	: variableStatement
 	| nonVarVariableStatement
-	| expression
+	| expressionStatement
 	;
 
 variableStatement
-	: 'var' Identifier '=' expression ';'
+	: 'var' variableName '=' expression ';'
 	;
 
 nonVarVariableStatement
 	: variableName '=' expression ';'
 	;
 
+expressionStatement
+	: expression ';'
+	;
+
 expression
-	: '[' .*? ']'
-	| '{' .*? '}'
-	| '"' .*? '"'
+	: methodCall
+	| arrayLiteral
+	| objectLiteral
+	| StringLiteral
 	| 'true' 
 	| 'false'
-	| variableName
+	| Identifier
+	;
+
+methodCall
+	: Identifier ('()' | '(' expression (',' expression)* ')' )
 	;
 
 variableName
 	: Identifier
 	;
 
+arrayLiteral
+	: '[' expression (',' expression)* ']'
+	;
+
+objectLiteral
+	: '{' (Identifier '=' expression (',' Identifier '=' expression)*)? '}'
+	;
+
+StringLiteral
+    :  '"' (~('\\'|'"'))* '"'
+    ;
+
 Identifier
-	: [a-z]+
+	: [a-zA-Z0-9]+
 	;
 
 WS

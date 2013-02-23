@@ -5,6 +5,6 @@ component {
 	other = idunnohomie;
 
 	public function nuts() {
-		var new = something;
+		var new = "somebody i used to know";
 	}
 }

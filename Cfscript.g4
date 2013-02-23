@@ -5,7 +5,7 @@ component
 	;
 
 componentBody
-	: componentElement (componentElement)*
+	: (componentElement)*
 	;
 
 componentElement
@@ -18,7 +18,7 @@ functionDeclaration
 	;
 
 functionBody
-	: statement (statement)*
+	: (statement)*
 	;
 
 statement
@@ -28,7 +28,7 @@ statement
 	;
 
 variableStatement
-	: 'var' variableName '=' expression ';'
+	: 'var' Identifier '=' expression ';'
 	;
 
 nonVarVariableStatement
@@ -36,11 +36,12 @@ nonVarVariableStatement
 	;
 
 expression
-	: '[' .*? ']' 
+	: '[' .*? ']'
 	| '{' .*? '}'
+	| '"' .*? '"'
 	| 'true' 
 	| 'false'
-	| Identifier
+	| variableName
 	;
 
 variableName
@@ -48,7 +49,7 @@ variableName
 	;
 
 Identifier
-	: [a-zA-Z0-9]+
+	: [a-z]+
 	;
 
 WS

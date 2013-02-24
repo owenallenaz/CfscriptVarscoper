@@ -1,0 +1,26 @@
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.Trees;
+
+public class Cfscript {
+	public static void main(String[] args) throws Exception {
+		ANTLRInputStream input = new ANTLRFileStream(args[0]);
+		CfscriptLexer lexer = new CfscriptLexer(input);
+		CommonTokenStream tokens = new CommonTokenStream(lexer);
+		CfscriptParser parser = new CfscriptParser(tokens);
+		parser.setBuildParseTree(true);
+		ParserRuleContext tree = parser.component();
+		tree.inspect(parser); // show in gui
+		//tree.save(parser, "/tmp/R.ps"); // Generate postscript
+		System.out.println(tree.children.size());
+		System.out.println(tree.getChild(1).getText());
+		Object o = tree.getChild(1).getPayload();
+		if (o instanceof Token) {
+			System.out.println("yourmom");
+		} else if (o instanceof ParserRuleContext) {
+			System.out.println((ParserRuleContext)o.getText());
+			System.out.println("mymom");
+		}
+		// System.out.println((Token)tree.getChild(1).getType());
+		// System.out.println(tree.toStringTree(parser));
+	}
+}

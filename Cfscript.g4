@@ -1,7 +1,7 @@
 grammar Cfscript;
 
 component
-	: 'component' '{' componentBody '}'
+	: 'component' keyValue* '{' componentBody '}'
 	;
 
 componentBody
@@ -14,7 +14,24 @@ componentElement
 	;
 
 functionDeclaration
-	: Identifier 'function' Identifier '()' '{' functionBody '}'
+	: Identifier? Identifier? 'function' functionName argumentsDefinition '{' functionBody '}'
+	;
+
+functionName
+	: Identifier
+	;
+
+argumentsDefinition
+	: '(' argumentDefinition (',' argumentDefinition)* ')'
+	| '()'
+	;
+
+argumentDefinition
+	: Identifier? Identifier? argumentName ('=' expression)?
+	; 
+
+argumentName
+	: Identifier
 	;
 
 functionBody
@@ -40,13 +57,34 @@ expressionStatement
 	;
 
 expression
-	: methodCall
+	: assignmentExpression
 	| arrayLiteral
 	| objectLiteral
 	| StringLiteral
+	| incrementExpression
+	| decrementExpression
 	| 'true' 
 	| 'false'
 	| Identifier
+	;
+
+incrementExpression
+	: variableName '++'
+	;
+
+decrementExpression
+	: variableName '--'
+	;
+
+assignmentExpression
+	: Identifier (assignmentExpressionSuffix)*
+	| assignmentExpression (('+'|'-'|'/'|'*') assignmentExpression)+
+	;
+
+assignmentExpressionSuffix
+	: '.' assignmentExpression
+	| ArrayIndex
+	| ('()' | '(' expression (',' expression)* ')' )
 	;
 
 methodCall
@@ -54,7 +92,12 @@ methodCall
 	;
 
 variableName
-	: Identifier
+	: Identifier (variableSuffix)*
+	;
+
+variableSuffix
+	: ArrayIndex
+	| '.' variableName
 	;
 
 arrayLiteral
@@ -65,9 +108,18 @@ objectLiteral
 	: '{' (Identifier '=' expression (',' Identifier '=' expression)*)? '}'
 	;
 
+keyValue
+	: Identifier '=' StringLiteral
+	;
+
 StringLiteral
     :  '"' (~('\\'|'"'))* '"'
     ;
+
+ ArrayIndex
+ 	: '[' [1-9] [0-9]* ']'
+ 	| '[' StringLiteral ']'
+ 	;
 
 Identifier
 	: [a-zA-Z0-9]+
@@ -75,4 +127,8 @@ Identifier
 
 WS
 	: [ \t\r\n]+ -> skip 
+	;
+
+COMMENT 
+	: '/*' .*? '*/'  -> skip
 	;

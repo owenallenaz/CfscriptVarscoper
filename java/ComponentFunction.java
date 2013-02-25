@@ -18,4 +18,8 @@ public class ComponentFunction {
 		varred.put("arguments", true);
 		varred.put("local", true);
 	}
+	
+	public boolean hasUnvarred() {
+		return unvarred.size() > 0 ? true : false;
+	}
 }

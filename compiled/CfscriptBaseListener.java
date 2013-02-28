@@ -15,6 +15,9 @@ public class CfscriptBaseListener implements CfscriptListener {
 	@Override public void enterArrayLiteral(CfscriptParser.ArrayLiteralContext ctx) { }
 	@Override public void exitArrayLiteral(CfscriptParser.ArrayLiteralContext ctx) { }
 
+	@Override public void enterForStatement(CfscriptParser.ForStatementContext ctx) { }
+	@Override public void exitForStatement(CfscriptParser.ForStatementContext ctx) { }
+
 	@Override public void enterVariableStatement(CfscriptParser.VariableStatementContext ctx) { }
 	@Override public void exitVariableStatement(CfscriptParser.VariableStatementContext ctx) { }
 
@@ -24,17 +27,11 @@ public class CfscriptBaseListener implements CfscriptListener {
 	@Override public void enterMethodCall(CfscriptParser.MethodCallContext ctx) { }
 	@Override public void exitMethodCall(CfscriptParser.MethodCallContext ctx) { }
 
-	@Override public void enterAssignmentExpression(CfscriptParser.AssignmentExpressionContext ctx) { }
-	@Override public void exitAssignmentExpression(CfscriptParser.AssignmentExpressionContext ctx) { }
-
 	@Override public void enterExpressionStatement(CfscriptParser.ExpressionStatementContext ctx) { }
 	@Override public void exitExpressionStatement(CfscriptParser.ExpressionStatementContext ctx) { }
 
 	@Override public void enterVariableSuffix(CfscriptParser.VariableSuffixContext ctx) { }
 	@Override public void exitVariableSuffix(CfscriptParser.VariableSuffixContext ctx) { }
-
-	@Override public void enterIncrementExpression(CfscriptParser.IncrementExpressionContext ctx) { }
-	@Override public void exitIncrementExpression(CfscriptParser.IncrementExpressionContext ctx) { }
 
 	@Override public void enterArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx) { }
 	@Override public void exitArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx) { }
@@ -45,17 +42,23 @@ public class CfscriptBaseListener implements CfscriptListener {
 	@Override public void enterComponentElement(CfscriptParser.ComponentElementContext ctx) { }
 	@Override public void exitComponentElement(CfscriptParser.ComponentElementContext ctx) { }
 
+	@Override public void enterIfStatement(CfscriptParser.IfStatementContext ctx) { }
+	@Override public void exitIfStatement(CfscriptParser.IfStatementContext ctx) { }
+
 	@Override public void enterStatement(CfscriptParser.StatementContext ctx) { }
 	@Override public void exitStatement(CfscriptParser.StatementContext ctx) { }
 
-	@Override public void enterDecrementExpression(CfscriptParser.DecrementExpressionContext ctx) { }
-	@Override public void exitDecrementExpression(CfscriptParser.DecrementExpressionContext ctx) { }
+	@Override public void enterExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx) { }
+	@Override public void exitExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx) { }
 
 	@Override public void enterNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx) { }
 	@Override public void exitNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx) { }
 
-	@Override public void enterAssignmentExpressionSuffix(CfscriptParser.AssignmentExpressionSuffixContext ctx) { }
-	@Override public void exitAssignmentExpressionSuffix(CfscriptParser.AssignmentExpressionSuffixContext ctx) { }
+	@Override public void enterExpressionItem(CfscriptParser.ExpressionItemContext ctx) { }
+	@Override public void exitExpressionItem(CfscriptParser.ExpressionItemContext ctx) { }
+
+	@Override public void enterWhileStatement(CfscriptParser.WhileStatementContext ctx) { }
+	@Override public void exitWhileStatement(CfscriptParser.WhileStatementContext ctx) { }
 
 	@Override public void enterComponent(CfscriptParser.ComponentContext ctx) { }
 	@Override public void exitComponent(CfscriptParser.ComponentContext ctx) { }

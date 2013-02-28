@@ -12,6 +12,9 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
 	void exitArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
 
+	void enterForStatement(CfscriptParser.ForStatementContext ctx);
+	void exitForStatement(CfscriptParser.ForStatementContext ctx);
+
 	void enterVariableStatement(CfscriptParser.VariableStatementContext ctx);
 	void exitVariableStatement(CfscriptParser.VariableStatementContext ctx);
 
@@ -21,17 +24,11 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterMethodCall(CfscriptParser.MethodCallContext ctx);
 	void exitMethodCall(CfscriptParser.MethodCallContext ctx);
 
-	void enterAssignmentExpression(CfscriptParser.AssignmentExpressionContext ctx);
-	void exitAssignmentExpression(CfscriptParser.AssignmentExpressionContext ctx);
-
 	void enterExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
 	void exitExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
 
 	void enterVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
 	void exitVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
-
-	void enterIncrementExpression(CfscriptParser.IncrementExpressionContext ctx);
-	void exitIncrementExpression(CfscriptParser.IncrementExpressionContext ctx);
 
 	void enterArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx);
 	void exitArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx);
@@ -42,17 +39,23 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterComponentElement(CfscriptParser.ComponentElementContext ctx);
 	void exitComponentElement(CfscriptParser.ComponentElementContext ctx);
 
+	void enterIfStatement(CfscriptParser.IfStatementContext ctx);
+	void exitIfStatement(CfscriptParser.IfStatementContext ctx);
+
 	void enterStatement(CfscriptParser.StatementContext ctx);
 	void exitStatement(CfscriptParser.StatementContext ctx);
 
-	void enterDecrementExpression(CfscriptParser.DecrementExpressionContext ctx);
-	void exitDecrementExpression(CfscriptParser.DecrementExpressionContext ctx);
+	void enterExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx);
+	void exitExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx);
 
 	void enterNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx);
 	void exitNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx);
 
-	void enterAssignmentExpressionSuffix(CfscriptParser.AssignmentExpressionSuffixContext ctx);
-	void exitAssignmentExpressionSuffix(CfscriptParser.AssignmentExpressionSuffixContext ctx);
+	void enterExpressionItem(CfscriptParser.ExpressionItemContext ctx);
+	void exitExpressionItem(CfscriptParser.ExpressionItemContext ctx);
+
+	void enterWhileStatement(CfscriptParser.WhileStatementContext ctx);
+	void exitWhileStatement(CfscriptParser.WhileStatementContext ctx);
 
 	void enterComponent(CfscriptParser.ComponentContext ctx);
 	void exitComponent(CfscriptParser.ComponentContext ctx);

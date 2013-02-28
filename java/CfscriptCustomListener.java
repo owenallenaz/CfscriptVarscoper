@@ -8,6 +8,14 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 		functions = new HashMap<String, ComponentFunction>();
 	}
 
+	@Override 
+	public void enterArgumentDefinition(CfscriptParser.ArgumentDefinitionContext ctx) {
+		String varName = ctx.argumentName().Identifier().getText();
+		if (!functions.get(currentFunction).varred.containsKey(varName)) {
+			functions.get(currentFunction).varred.put(varName, true);
+		}
+	}
+
 	@Override
 	public void enterVariableStatement(CfscriptParser.VariableStatementContext ctx) {
 		if (currentFunction == null) {

@@ -1,7 +1,31 @@
 component something = "foo" another = "more" persistent = "true" datasource = "#application.env.dsn#" {
-	local.nuts.method = "multi-chain scope requirement";
+	/* myvar = 1 + 1 + 1;
+	myvar = something.nuts.method ? "blah" : "blah";
+
+	local.nuts.method = "multi-chain scope requirement"; */
+
+	/* if (simpleIf) {
+		unscoped = "unscoped";
+	}
+
+	if (!yourmom && !mymom && (something + 1) < 5) {
+		anotherScope = "something new";
+	}
+
+	for(local.i = 0; local.i < something; local.i++) {
+		moreUnscoped = "more unscoped";
+	}
+
+	for(var i = local.something.getMethod(); local.i && test && !yourmom; local.i + something.method.foo()[5]) {
+		var newVar = "finally";
+		oldVar = "unscoped";
+	} */
+
+	while (true) {
+		myvar = "test while";
+	}
 	 
-	var method = something.foo.yourmom;
+	/* var method = something.foo.yourmom;
 	testing = something.foo[10];
 	testingagain = something.foo["this is a test"];
 	nuts["testing"]++;
@@ -28,10 +52,12 @@ component something = "foo" another = "more" persistent = "true" datasource = "#
 	}
 
 	function test2(required string test1 = "first", string test = "second", test3 = "third") {
-
+		test1 = "should be varred";
+		test4 = "should not be varred";
+		var test5 = "should be varred";
 	}
  
 	private boolean function test3() {
 		var this = "something else";
-	}
+	} */
 }

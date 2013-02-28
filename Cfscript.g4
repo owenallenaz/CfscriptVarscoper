@@ -42,6 +42,9 @@ statement
 	: variableStatement
 	| nonVarVariableStatement
 	| expressionStatement
+	| ifStatement
+	| forStatement
+	| whileStatement
 	;
 
 variableStatement
@@ -52,37 +55,52 @@ nonVarVariableStatement
 	: variableName '=' expression ';'
 	;
 
+ifStatement
+	: 'if' '(' expression ')' '{' functionBody '}'
+	;
+
+forStatement
+	: 'for' '(' ( variableStatement | nonVarVariableStatement ) expression ';' expression ')' '{' functionBody '}'
+	;
+
+whileStatement
+	: 'while' '(' expression ')' '{' functionBody '}'
+	;
+
 expressionStatement
 	: expression ';'
 	;
 
 expression
-	: assignmentExpression
+	: '(' expression ')'
+	| expression ('*' | '/' | '%') expression
+	| expression ('+' | '-') expression
+	| expression ('<<' | '>>') expression
+	| expression ('<' | '>' | '<=' | '>=') expression
+	| expression ('!=' | '==') expression
+	| expression '&' expression
+	| expression '^' expression
+	| expression '|' expression
+	| expression '&&' expression
+	| expression '||' expression
+	| expression '?' expression ':' expression
+	| expression '++'
+	| expression '--'
+	| '!' expression
 	| arrayLiteral
 	| objectLiteral
 	| StringLiteral
-	| incrementExpression
-	| decrementExpression
-	| 'true' 
+	| 'true'
 	| 'false'
-	| Identifier
+	| expressionItem
 	;
 
-incrementExpression
-	: variableName '++'
+expressionItem
+	: Identifier (expressionItemSuffix)*
 	;
 
-decrementExpression
-	: variableName '--'
-	;
-
-assignmentExpression
-	: Identifier (assignmentExpressionSuffix)*
-	| assignmentExpression (('+'|'-'|'/'|'*') assignmentExpression)+
-	;
-
-assignmentExpressionSuffix
-	: '.' assignmentExpression
+expressionItemSuffix
+	: '.' expressionItem
 	| ArrayIndex
 	| ('()' | '(' expression (',' expression)* ')' )
 	;

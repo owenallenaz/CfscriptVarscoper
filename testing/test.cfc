@@ -1,10 +1,17 @@
 component something = "foo" another = "more" persistent = "true" datasource = "#application.env.dsn#" {
-	/* myvar = 1 + 1 + 1;
+	property something;
+	property name = "something" value = "somethingelse" datasource = "yourmom";
+
+	savecontent variable = "local.something" {
+		writeOutput("test");
+	}
+
+	myvar = 1 + 1 + 1;
 	myvar = something.nuts.method ? "blah" : "blah";
 
-	local.nuts.method = "multi-chain scope requirement"; */
+	local.nuts.method = "multi-chain scope requirement";
 
-	/* if (simpleIf) {
+	if (simpleIf) {
 		unscoped = "unscoped";
 	}
 
@@ -19,13 +26,13 @@ component something = "foo" another = "more" persistent = "true" datasource = "#
 	for(var i = local.something.getMethod(); local.i && test && !yourmom; local.i + something.method.foo()[5]) {
 		var newVar = "finally";
 		oldVar = "unscoped";
-	} */
+	}
 
 	while (true) {
 		myvar = "test while";
 	}
 	 
-	/* var method = something.foo.yourmom;
+	var method = something.foo.yourmom;
 	testing = something.foo[10];
 	testingagain = something.foo["this is a test"];
 	nuts["testing"]++;
@@ -59,5 +66,5 @@ component something = "foo" another = "more" persistent = "true" datasource = "#
  
 	private boolean function test3() {
 		var this = "something else";
-	} */
+	}
 }

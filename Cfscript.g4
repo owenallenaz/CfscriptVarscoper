@@ -9,8 +9,14 @@ componentBody
 	;
 
 componentElement
-	: statement
-	| functionDeclaration
+	: functionDeclaration
+	| propertyDeclaration
+	| statement
+	;
+
+propertyDeclaration
+	: 'property' Identifier ';'
+	| 'property' keyValue* ';'
 	;
 
 functionDeclaration
@@ -45,6 +51,11 @@ statement
 	| ifStatement
 	| forStatement
 	| whileStatement
+	| saveContentStatement
+	;
+
+saveContentStatement
+	: 'savecontent' 'variable' '=' quotedVariableName '{' functionBody '}'
 	;
 
 variableStatement
@@ -107,6 +118,10 @@ expressionItemSuffix
 
 methodCall
 	: Identifier ('()' | '(' expression (',' expression)* ')' )
+	;
+
+quotedVariableName
+	: StringLiteral
 	;
 
 variableName

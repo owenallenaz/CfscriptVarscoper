@@ -155,13 +155,13 @@ StringLiteral
  	;
 
 Identifier
-	: [a-zA-Z0-9]+
+	: [a-zA-Z0-9_]+
 	;
 
 WS
 	: [ \t\r\n]+ -> skip 
 	;
 
-COMMENT 
-	: '/*' .*? '*/'  -> skip
+COMMENT
+	:	( '//' ~[\r\n]* '\r'? '\n' | '/*' .*? '*/' ) -> channel(HIDDEN)
 	;

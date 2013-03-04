@@ -1,0 +1,10 @@
+body { padding-top: 40px; }
+.results .component { border: 1px solid #ccc; margin-bottom: 10px; }
+.results .component .topLine { padding: 20px; }
+.results .component.hasUnvarred .topLine { background: #f2dede; }
+.results .component .detailsRow { margin-left: 40px; margin-right: 40px; display: none; }
+.results .component .openIcon { display: inline-block; }
+.results .component .closeIcon { display: none; }
+.results .component.open .detailsRow { display: block; }
+.results .component.open .openIcon { display: none; }
+.results .component.open .closeIcon { display: inline-block; }

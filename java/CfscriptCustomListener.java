@@ -11,9 +11,7 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 	@Override 
 	public void enterArgumentDefinition(CfscriptParser.ArgumentDefinitionContext ctx) {
 		String varName = ctx.argumentName().Identifier().getText();
-		if (!functions.get(currentFunction).varred.containsKey(varName)) {
-			functions.get(currentFunction).varred.put(varName, true);
-		}
+		functions.get(currentFunction).varred.put(varName, true);
 	}
 
 	@Override
@@ -35,9 +33,7 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 		}
 
 		String varName = ctx.variableName().Identifier().getText();
-		if (!functions.get(currentFunction).varred.containsKey(varName)) {
-			functions.get(currentFunction).unvarred.put(varName, true);
-		}
+		checkVar(varName);
 	}
 
 	@Override
@@ -52,7 +48,25 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 	public void exitFunctionDeclaration(CfscriptParser.FunctionDeclarationContext ctx) {
 		currentFunction = null;
 	}
-
+	
+	@Override 
+	public void enterQuotedVariableName(CfscriptParser.QuotedVariableNameContext ctx) {
+		if (currentFunction == null) {
+			return;
+		}
+		
+		String varName = ctx.getText();
+		varName = varName.substring(1, varName.length() - 1);
+		varName = varName.replaceAll("(\\.|\\[|\\().*", "");
+		checkVar(varName);
+	}
+	
+	private void checkVar(String varName) {
+		if (!functions.get(currentFunction).varred.containsKey(varName)) {
+			functions.get(currentFunction).unvarred.put(varName, true);
+		}
+	}
+	
 	public boolean hasUnvarred() {
 		for(String i : functions.keySet()) {
 			if (functions.get(i).hasUnvarred()) {

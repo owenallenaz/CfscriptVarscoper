@@ -9,11 +9,11 @@ public class CfscriptBaseListener implements CfscriptListener {
 	@Override public void enterObjectLiteral(CfscriptParser.ObjectLiteralContext ctx) { }
 	@Override public void exitObjectLiteral(CfscriptParser.ObjectLiteralContext ctx) { }
 
-	@Override public void enterExpression(CfscriptParser.ExpressionContext ctx) { }
-	@Override public void exitExpression(CfscriptParser.ExpressionContext ctx) { }
-
 	@Override public void enterQuotedVariableName(CfscriptParser.QuotedVariableNameContext ctx) { }
 	@Override public void exitQuotedVariableName(CfscriptParser.QuotedVariableNameContext ctx) { }
+
+	@Override public void enterExpression(CfscriptParser.ExpressionContext ctx) { }
+	@Override public void exitExpression(CfscriptParser.ExpressionContext ctx) { }
 
 	@Override public void enterArrayLiteral(CfscriptParser.ArrayLiteralContext ctx) { }
 	@Override public void exitArrayLiteral(CfscriptParser.ArrayLiteralContext ctx) { }
@@ -24,11 +24,11 @@ public class CfscriptBaseListener implements CfscriptListener {
 	@Override public void enterForStatement(CfscriptParser.ForStatementContext ctx) { }
 	@Override public void exitForStatement(CfscriptParser.ForStatementContext ctx) { }
 
-	@Override public void enterMethodCall(CfscriptParser.MethodCallContext ctx) { }
-	@Override public void exitMethodCall(CfscriptParser.MethodCallContext ctx) { }
-
 	@Override public void enterVariableName(CfscriptParser.VariableNameContext ctx) { }
 	@Override public void exitVariableName(CfscriptParser.VariableNameContext ctx) { }
+
+	@Override public void enterMethodCall(CfscriptParser.MethodCallContext ctx) { }
+	@Override public void exitMethodCall(CfscriptParser.MethodCallContext ctx) { }
 
 	@Override public void enterExpressionStatement(CfscriptParser.ExpressionStatementContext ctx) { }
 	@Override public void exitExpressionStatement(CfscriptParser.ExpressionStatementContext ctx) { }
@@ -38,6 +38,9 @@ public class CfscriptBaseListener implements CfscriptListener {
 
 	@Override public void enterVariableSuffix(CfscriptParser.VariableSuffixContext ctx) { }
 	@Override public void exitVariableSuffix(CfscriptParser.VariableSuffixContext ctx) { }
+
+	@Override public void enterReturnStatement(CfscriptParser.ReturnStatementContext ctx) { }
+	@Override public void exitReturnStatement(CfscriptParser.ReturnStatementContext ctx) { }
 
 	@Override public void enterNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx) { }
 	@Override public void exitNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx) { }
@@ -89,6 +92,9 @@ public class CfscriptBaseListener implements CfscriptListener {
 
 	@Override public void enterKeyValue(CfscriptParser.KeyValueContext ctx) { }
 	@Override public void exitKeyValue(CfscriptParser.KeyValueContext ctx) { }
+
+	@Override public void enterMethodArgument(CfscriptParser.MethodArgumentContext ctx) { }
+	@Override public void exitMethodArgument(CfscriptParser.MethodArgumentContext ctx) { }
 
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	@Override public void exitEveryRule(ParserRuleContext ctx) { }

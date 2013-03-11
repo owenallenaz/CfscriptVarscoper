@@ -6,11 +6,11 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterObjectLiteral(CfscriptParser.ObjectLiteralContext ctx);
 	void exitObjectLiteral(CfscriptParser.ObjectLiteralContext ctx);
 
-	void enterExpression(CfscriptParser.ExpressionContext ctx);
-	void exitExpression(CfscriptParser.ExpressionContext ctx);
-
 	void enterQuotedVariableName(CfscriptParser.QuotedVariableNameContext ctx);
 	void exitQuotedVariableName(CfscriptParser.QuotedVariableNameContext ctx);
+
+	void enterExpression(CfscriptParser.ExpressionContext ctx);
+	void exitExpression(CfscriptParser.ExpressionContext ctx);
 
 	void enterArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
 	void exitArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
@@ -21,11 +21,11 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterForStatement(CfscriptParser.ForStatementContext ctx);
 	void exitForStatement(CfscriptParser.ForStatementContext ctx);
 
-	void enterMethodCall(CfscriptParser.MethodCallContext ctx);
-	void exitMethodCall(CfscriptParser.MethodCallContext ctx);
-
 	void enterVariableName(CfscriptParser.VariableNameContext ctx);
 	void exitVariableName(CfscriptParser.VariableNameContext ctx);
+
+	void enterMethodCall(CfscriptParser.MethodCallContext ctx);
+	void exitMethodCall(CfscriptParser.MethodCallContext ctx);
 
 	void enterExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
 	void exitExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
@@ -35,6 +35,9 @@ public interface CfscriptListener extends ParseTreeListener {
 
 	void enterVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
 	void exitVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
+
+	void enterReturnStatement(CfscriptParser.ReturnStatementContext ctx);
+	void exitReturnStatement(CfscriptParser.ReturnStatementContext ctx);
 
 	void enterNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx);
 	void exitNonVarVariableStatement(CfscriptParser.NonVarVariableStatementContext ctx);
@@ -86,4 +89,7 @@ public interface CfscriptListener extends ParseTreeListener {
 
 	void enterKeyValue(CfscriptParser.KeyValueContext ctx);
 	void exitKeyValue(CfscriptParser.KeyValueContext ctx);
+
+	void enterMethodArgument(CfscriptParser.MethodArgumentContext ctx);
+	void exitMethodArgument(CfscriptParser.MethodArgumentContext ctx);
 }

@@ -48,6 +48,7 @@ statement
 	: variableStatement
 	| nonVarVariableStatement
 	| expressionStatement
+	| returnStatement
 	| ifStatement
 	| forStatement
 	| whileStatement
@@ -59,15 +60,19 @@ saveContentStatement
 	;
 
 variableStatement
-	: 'var' variableName '=' expression ';'
+	: 'var' variableName ('&'|'+')? '=' expression ';'
 	;
 
 nonVarVariableStatement
-	: variableName '=' expression ';'
+	: variableName ('&'|'+')? '=' expression ';'
+	;
+
+returnStatement
+	: 'return' expression ';'
 	;
 
 ifStatement
-	: 'if' '(' expression ')' '{' functionBody '}'
+	: 'if' '(' expression ')' '{' functionBody '}' ('else' ifStatement)* ('else' '{' functionBody '}')?
 	;
 
 forStatement
@@ -87,9 +92,9 @@ expression
 	| expression ('*' | '/' | '%') expression
 	| expression ('+' | '-') expression
 	| expression ('<<' | '>>') expression
-	| expression ('<' | '>' | '<=' | '>=') expression
-	| expression ('!=' | '==') expression
-	| expression '&' expression
+	| expression ('<' | '>' | '<=' | '>=' | 'gt' | 'gte' | 'lt' | 'lte') expression
+	| expression ('!=' | '==' | 'eq' | 'neq' | 'is' | 'is' 'not') expression
+	| expression ('&' | 'and') expression
 	| expression '^' expression
 	| expression '|' expression
 	| expression '&&' expression
@@ -112,12 +117,18 @@ expressionItem
 
 expressionItemSuffix
 	: '.' expressionItem
+	| '[' expression ']'
 	| ArrayIndex
-	| ('()' | '(' expression (',' expression)* ')' )
+	| ('()' | '(' methodArgument (',' methodArgument)* ')' )
 	;
 
 methodCall
-	: Identifier ('()' | '(' expression (',' expression)* ')' )
+	: Identifier ('()' | '(' methodArgument (',' methodArgument)* ')' )
+	;
+
+methodArgument
+	: Identifier '=' expression
+	| expression
 	;
 
 quotedVariableName
@@ -146,13 +157,13 @@ keyValue
 	;
 
 StringLiteral
-    :  '"' (~('\\'|'"'))* '"'
-    ;
+	: '"' (~('\\'|'"'))* '"'
+	;
 
- ArrayIndex
- 	: '[' [1-9] [0-9]* ']'
- 	| '[' StringLiteral ']'
- 	;
+ArrayIndex
+	: '[' [1-9] [0-9]* ']'
+	| '[' StringLiteral ']'
+	;
 
 Identifier
 	: [a-zA-Z0-9_]+

@@ -1,5 +1,9 @@
 component something = "foo" another = "more" persistent = "true" datasource = "#application.env.dsn#" {
-	property something;
+	public function test() {
+		return "here is something";
+	}
+	
+	/* property something;
 	property name = "something" value = "somethingelse" datasource = "yourmom";
 
 	savecontent variable = "local.something" {
@@ -66,5 +70,5 @@ component something = "foo" another = "more" persistent = "true" datasource = "#
  
 	private boolean function test3() {
 		var this = "something else";
-	}
+	} */
 }

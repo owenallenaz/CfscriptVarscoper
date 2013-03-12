@@ -1,5 +1,5 @@
 component {
-	/* function init() {
+	function init() {
 		// stores the navigation data on reinit
 		variables.data = getNavData();
 		// stores every instance of the navigation objects which are re-used page to page
@@ -128,11 +128,11 @@ component {
 				writeOutput("<!-- Rendered on #Now()# in #getTickCount() - local.start#ms -->");
 			}
 			
-			if (StructKeyExists(request, "cacheEnabled") && request.cacheEnabled && local.menu.getCacheTime() > 0) { */
+			if (StructKeyExists(request, "cacheEnabled") && request.cacheEnabled && local.menu.getCacheTime() > 0) {
 				// cachePut(local.hash, local.return, local.menu.getCacheTime());
 				// local.return.yourmom();
-				local.return;
-			/* }
+				// local.return;
+			}
 			
 			return local.return;
 		} else {
@@ -277,5 +277,5 @@ component {
 		}
 		
 		return local.data;
-	} */
+	}
 }

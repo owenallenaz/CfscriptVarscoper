@@ -14,24 +14,24 @@ public class CfscriptParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__55=1, T__54=2, T__53=3, T__52=4, T__51=5, T__50=6, T__49=7, T__48=8, 
-		T__47=9, T__46=10, T__45=11, T__44=12, T__43=13, T__42=14, T__41=15, T__40=16, 
-		T__39=17, T__38=18, T__37=19, T__36=20, T__35=21, T__34=22, T__33=23, 
-		T__32=24, T__31=25, T__30=26, T__29=27, T__28=28, T__27=29, T__26=30, 
-		T__25=31, T__24=32, T__23=33, T__22=34, T__21=35, T__20=36, T__19=37, 
-		T__18=38, T__17=39, T__16=40, T__15=41, T__14=42, T__13=43, T__12=44, 
-		T__11=45, T__10=46, T__9=47, T__8=48, T__7=49, T__6=50, T__5=51, T__4=52, 
-		T__3=53, T__2=54, T__1=55, T__0=56, StringLiteral=57, ArrayIndex=58, Identifier=59, 
-		WS=60, COMMENT=61;
+		T__31=1, T__30=2, T__29=3, T__28=4, T__27=5, T__26=6, T__25=7, T__24=8, 
+		T__23=9, T__22=10, T__21=11, T__20=12, T__19=13, T__18=14, T__17=15, T__16=16, 
+		T__15=17, T__14=18, T__13=19, T__12=20, T__11=21, T__10=22, T__9=23, T__8=24, 
+		T__7=25, T__6=26, T__5=27, T__4=28, T__3=29, T__2=30, T__1=31, T__0=32, 
+		K_Return=33, K_If=34, K_Else=35, K_For=36, K_While=37, K_Savecontent=38, 
+		K_Var=39, K_Variable=40, K_Component=41, K_Property=42, K_Gt=43, K_Lt=44, 
+		K_Gte=45, K_Lte=46, K_Eq=47, K_Neq=48, K_Not=49, K_Is=50, K_And=51, K_True=52, 
+		K_False=53, K_New=54, K_In=55, CharacterLiteral=56, StringLiteral=57, 
+		DecimalLiteral=58, FloatingPointLiteral=59, Identifier=60, WS=61, COMMENT=62;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'component'", "'&'", "'()'", "'*'", "'['", "'<'", "'--'", 
-		"'savecontent'", "'false'", "'!='", "'<='", "'<<'", "'}'", "'eq'", "'lt'", 
-		"'%'", "'variable'", "')'", "'gt'", "'='", "'gte'", "'|'", "'!'", "']'", 
-		"','", "'-'", "'while'", "':'", "'not'", "'('", "'if'", "'lte'", "'var'", 
-		"'?'", "'{'", "'and'", "'else'", "'true'", "'++'", "'>>'", "'property'", 
-		"'^'", "'is'", "'function'", "'.'", "'+'", "'for'", "'return'", "';'", 
-		"'&&'", "'||'", "'>'", "'neq'", "'=='", "'/'", "'>='", "StringLiteral", 
-		"ArrayIndex", "Identifier", "WS", "COMMENT"
+		"<INVALID>", "']'", "'&'", "'()'", "','", "'*'", "'-'", "'['", "'('", 
+		"':'", "'<'", "'--'", "'?'", "'{'", "'}'", "'++'", "'%'", "'[]'", "'^'", 
+		"'function'", "')'", "'.'", "'+'", "'='", "';'", "'&&'", "'{}'", "'||'", 
+		"'>'", "'/'", "'~'", "'|'", "'!'", "K_Return", "K_If", "K_Else", "K_For", 
+		"K_While", "K_Savecontent", "K_Var", "K_Variable", "K_Component", "K_Property", 
+		"K_Gt", "K_Lt", "K_Gte", "K_Lte", "K_Eq", "K_Neq", "K_Not", "K_Is", "K_And", 
+		"K_True", "K_False", "K_New", "K_In", "CharacterLiteral", "StringLiteral", 
+		"DecimalLiteral", "FloatingPointLiteral", "Identifier", "WS", "COMMENT"
 	};
 	public static final int
 		RULE_component = 0, RULE_componentBody = 1, RULE_componentElement = 2, 
@@ -40,18 +40,18 @@ public class CfscriptParser extends Parser {
 		RULE_functionBody = 9, RULE_statement = 10, RULE_saveContentStatement = 11, 
 		RULE_variableStatement = 12, RULE_nonVarVariableStatement = 13, RULE_returnStatement = 14, 
 		RULE_ifStatement = 15, RULE_forStatement = 16, RULE_whileStatement = 17, 
-		RULE_expressionStatement = 18, RULE_expression = 19, RULE_expressionItem = 20, 
-		RULE_expressionItemSuffix = 21, RULE_methodCall = 22, RULE_methodArgument = 23, 
-		RULE_quotedVariableName = 24, RULE_variableName = 25, RULE_variableSuffix = 26, 
-		RULE_arrayLiteral = 27, RULE_objectLiteral = 28, RULE_keyValue = 29;
+		RULE_expressionStatement = 18, RULE_expression = 19, RULE_expressionFirst = 20, 
+		RULE_validSecond = 21, RULE_expressionMethod = 22, RULE_literal = 23, 
+		RULE_quotedVariableName = 24, RULE_variableName = 25, RULE_variableNameFirst = 26, 
+		RULE_arrayLiteral = 27, RULE_objectLiteral = 28, RULE_keyValue = 29, RULE_booleanLiteral = 30;
 	public static final String[] ruleNames = {
 		"component", "componentBody", "componentElement", "propertyDeclaration", 
 		"functionDeclaration", "functionName", "argumentsDefinition", "argumentDefinition", 
 		"argumentName", "functionBody", "statement", "saveContentStatement", "variableStatement", 
 		"nonVarVariableStatement", "returnStatement", "ifStatement", "forStatement", 
-		"whileStatement", "expressionStatement", "expression", "expressionItem", 
-		"expressionItemSuffix", "methodCall", "methodArgument", "quotedVariableName", 
-		"variableName", "variableSuffix", "arrayLiteral", "objectLiteral", "keyValue"
+		"whileStatement", "expressionStatement", "expression", "expressionFirst", 
+		"validSecond", "expressionMethod", "literal", "quotedVariableName", "variableName", 
+		"variableNameFirst", "arrayLiteral", "objectLiteral", "keyValue", "booleanLiteral"
 	};
 
 	@Override
@@ -77,6 +77,7 @@ public class CfscriptParser extends Parser {
 		public ComponentBodyContext componentBody() {
 			return getRuleContext(ComponentBodyContext.class,0);
 		}
+		public TerminalNode K_Component() { return getToken(CfscriptParser.K_Component, 0); }
 		public List<KeyValueContext> keyValue() {
 			return getRuleContexts(KeyValueContext.class);
 		}
@@ -101,23 +102,23 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60); match(1);
-			setState(64);
+			setState(62); match(K_Component);
+			setState(66);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Identifier) {
 				{
 				{
-				setState(61); keyValue();
+				setState(63); keyValue();
 				}
 				}
-				setState(66);
+				setState(68);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(67); match(35);
-			setState(68); componentBody();
 			setState(69); match(13);
+			setState(70); componentBody();
+			setState(71); match(14);
 			}
 		}
 		catch (RecognitionException re) {
@@ -159,16 +160,16 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(76);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 5) | (1L << 8) | (1L << 9) | (1L << 23) | (1L << 27) | (1L << 30) | (1L << 31) | (1L << 33) | (1L << 35) | (1L << 38) | (1L << 41) | (1L << 44) | (1L << 47) | (1L << 48) | (1L << StringLiteral) | (1L << Identifier))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 7) | (1L << 8) | (1L << 13) | (1L << 17) | (1L << 19) | (1L << 22) | (1L << 26) | (1L << 30) | (1L << 32) | (1L << K_Return) | (1L << K_If) | (1L << K_For) | (1L << K_While) | (1L << K_Savecontent) | (1L << K_Var) | (1L << K_Property) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << DecimalLiteral) | (1L << FloatingPointLiteral) | (1L << Identifier))) != 0)) {
 				{
 				{
-				setState(71); componentElement();
+				setState(73); componentElement();
 				}
 				}
-				setState(76);
+				setState(78);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -213,26 +214,26 @@ public class CfscriptParser extends Parser {
 		ComponentElementContext _localctx = new ComponentElementContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_componentElement);
 		try {
-			setState(80);
+			setState(82);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(77); functionDeclaration();
+				setState(79); functionDeclaration();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(78); propertyDeclaration();
+				setState(80); propertyDeclaration();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(79); statement();
+				setState(81); statement();
 				}
 				break;
 			}
@@ -249,6 +250,7 @@ public class CfscriptParser extends Parser {
 	}
 
 	public static class PropertyDeclarationContext extends ParserRuleContext {
+		public TerminalNode K_Property() { return getToken(CfscriptParser.K_Property, 0); }
 		public KeyValueContext keyValue(int i) {
 			return getRuleContext(KeyValueContext.class,i);
 		}
@@ -275,35 +277,35 @@ public class CfscriptParser extends Parser {
 		enterRule(_localctx, 6, RULE_propertyDeclaration);
 		int _la;
 		try {
-			setState(93);
+			setState(95);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(82); match(41);
-				setState(83); match(Identifier);
-				setState(84); match(49);
+				setState(84); match(K_Property);
+				setState(85); match(Identifier);
+				setState(86); match(24);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(85); match(41);
-				setState(89);
+				setState(87); match(K_Property);
+				setState(91);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==Identifier) {
 					{
 					{
-					setState(86); keyValue();
+					setState(88); keyValue();
 					}
 					}
-					setState(91);
+					setState(93);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(92); match(49);
+				setState(94); match(24);
 				}
 				break;
 			}
@@ -354,28 +356,26 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(98);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
-				setState(95); match(Identifier);
+				setState(97); match(Identifier);
 				}
 				break;
 			}
-			setState(99);
+			setState(101);
 			_la = _input.LA(1);
 			if (_la==Identifier) {
 				{
-				setState(98); match(Identifier);
+				setState(100); match(Identifier);
 				}
 			}
 
-			setState(101); match(44);
-			setState(102); functionName();
-			setState(103); argumentsDefinition();
-			setState(104); match(35);
-			setState(105); functionBody();
-			setState(106); match(13);
+			setState(103); match(19);
+			setState(104); functionName();
+			setState(105); argumentsDefinition();
+			setState(106); functionBody();
 			}
 		}
 		catch (RecognitionException re) {
@@ -453,18 +453,18 @@ public class CfscriptParser extends Parser {
 		try {
 			setState(122);
 			switch (_input.LA(1)) {
-			case 30:
+			case 8:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(110); match(30);
+				setState(110); match(8);
 				setState(111); argumentDefinition();
 				setState(116);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==25) {
+				while (_la==4) {
 					{
 					{
-					setState(112); match(25);
+					setState(112); match(4);
 					setState(113); argumentDefinition();
 					}
 					}
@@ -472,7 +472,7 @@ public class CfscriptParser extends Parser {
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(119); match(18);
+				setState(119); match(20);
 				}
 				break;
 			case 3:
@@ -547,9 +547,9 @@ public class CfscriptParser extends Parser {
 			setState(130); argumentName();
 			setState(133);
 			_la = _input.LA(1);
-			if (_la==20) {
+			if (_la==23) {
 				{
-				setState(131); match(20);
+				setState(131); match(23);
 				setState(132); expression(0);
 				}
 			}
@@ -631,19 +631,21 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(140);
+			setState(137); match(13);
+			setState(141);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 5) | (1L << 8) | (1L << 9) | (1L << 23) | (1L << 27) | (1L << 30) | (1L << 31) | (1L << 33) | (1L << 35) | (1L << 38) | (1L << 47) | (1L << 48) | (1L << StringLiteral) | (1L << Identifier))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 7) | (1L << 8) | (1L << 13) | (1L << 17) | (1L << 22) | (1L << 26) | (1L << 30) | (1L << 32) | (1L << K_Return) | (1L << K_If) | (1L << K_For) | (1L << K_While) | (1L << K_Savecontent) | (1L << K_Var) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << DecimalLiteral) | (1L << FloatingPointLiteral) | (1L << Identifier))) != 0)) {
 				{
 				{
-				setState(137); statement();
+				setState(138); statement();
 				}
 				}
-				setState(142);
+				setState(143);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
+			setState(144); match(14);
 			}
 		}
 		catch (RecognitionException re) {
@@ -700,61 +702,61 @@ public class CfscriptParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_statement);
 		try {
-			setState(151);
+			setState(154);
 			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(143); variableStatement();
+				setState(146); variableStatement();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(144); nonVarVariableStatement();
+				setState(147); nonVarVariableStatement();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(145); expressionStatement();
+				setState(148); expressionStatement();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(146); returnStatement();
+				setState(149); returnStatement();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(147); ifStatement();
+				setState(150); ifStatement();
 				}
 				break;
 
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(148); forStatement();
+				setState(151); forStatement();
 				}
 				break;
 
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(149); whileStatement();
+				setState(152); whileStatement();
 				}
 				break;
 
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(150); saveContentStatement();
+				setState(153); saveContentStatement();
 				}
 				break;
 			}
@@ -777,6 +779,8 @@ public class CfscriptParser extends Parser {
 		public FunctionBodyContext functionBody() {
 			return getRuleContext(FunctionBodyContext.class,0);
 		}
+		public TerminalNode K_Savecontent() { return getToken(CfscriptParser.K_Savecontent, 0); }
+		public TerminalNode K_Variable() { return getToken(CfscriptParser.K_Variable, 0); }
 		public SaveContentStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -797,13 +801,11 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(153); match(8);
-			setState(154); match(17);
-			setState(155); match(20);
-			setState(156); quotedVariableName();
-			setState(157); match(35);
-			setState(158); functionBody();
-			setState(159); match(13);
+			setState(156); match(K_Savecontent);
+			setState(157); match(K_Variable);
+			setState(158); match(23);
+			setState(159); quotedVariableName();
+			setState(160); functionBody();
 			}
 		}
 		catch (RecognitionException re) {
@@ -821,6 +823,7 @@ public class CfscriptParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode K_Var() { return getToken(CfscriptParser.K_Var, 0); }
 		public VariableNameContext variableName() {
 			return getRuleContext(VariableNameContext.class,0);
 		}
@@ -845,24 +848,24 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(161); match(33);
-			setState(162); variableName();
-			setState(164);
+			setState(162); match(K_Var);
+			setState(163); variableName(0);
+			setState(165);
 			_la = _input.LA(1);
-			if (_la==2 || _la==46) {
+			if (_la==2 || _la==22) {
 				{
-				setState(163);
+				setState(164);
 				_la = _input.LA(1);
-				if ( !(_la==2 || _la==46) ) {
+				if ( !(_la==2 || _la==22) ) {
 				_errHandler.recoverInline(this);
 				}
 				consume();
 				}
 			}
 
-			setState(166); match(20);
-			setState(167); expression(0);
-			setState(168); match(49);
+			setState(167); match(23);
+			setState(168); expression(0);
+			setState(169); match(24);
 			}
 		}
 		catch (RecognitionException re) {
@@ -904,23 +907,23 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(170); variableName();
-			setState(172);
+			setState(171); variableName(0);
+			setState(173);
 			_la = _input.LA(1);
-			if (_la==2 || _la==46) {
+			if (_la==2 || _la==22) {
 				{
-				setState(171);
+				setState(172);
 				_la = _input.LA(1);
-				if ( !(_la==2 || _la==46) ) {
+				if ( !(_la==2 || _la==22) ) {
 				_errHandler.recoverInline(this);
 				}
 				consume();
 				}
 			}
 
-			setState(174); match(20);
-			setState(175); expression(0);
-			setState(176); match(49);
+			setState(175); match(23);
+			setState(176); expression(0);
+			setState(177); match(24);
 			}
 		}
 		catch (RecognitionException re) {
@@ -938,6 +941,7 @@ public class CfscriptParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode K_Return() { return getToken(CfscriptParser.K_Return, 0); }
 		public ReturnStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -955,12 +959,20 @@ public class CfscriptParser extends Parser {
 	public final ReturnStatementContext returnStatement() throws RecognitionException {
 		ReturnStatementContext _localctx = new ReturnStatementContext(_ctx, getState());
 		enterRule(_localctx, 28, RULE_returnStatement);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(178); match(48);
-			setState(179); expression(0);
-			setState(180); match(49);
+			setState(179); match(K_Return);
+			setState(181);
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 7) | (1L << 8) | (1L << 13) | (1L << 17) | (1L << 22) | (1L << 26) | (1L << 30) | (1L << 32) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << DecimalLiteral) | (1L << FloatingPointLiteral) | (1L << Identifier))) != 0)) {
+				{
+				setState(180); expression(0);
+				}
+			}
+
+			setState(183); match(24);
 			}
 		}
 		catch (RecognitionException re) {
@@ -981,9 +993,14 @@ public class CfscriptParser extends Parser {
 		public IfStatementContext ifStatement(int i) {
 			return getRuleContext(IfStatementContext.class,i);
 		}
+		public TerminalNode K_Else(int i) {
+			return getToken(CfscriptParser.K_Else, i);
+		}
 		public List<FunctionBodyContext> functionBody() {
 			return getRuleContexts(FunctionBodyContext.class);
 		}
+		public TerminalNode K_If() { return getToken(CfscriptParser.K_If, 0); }
+		public List<TerminalNode> K_Else() { return getTokens(CfscriptParser.K_Else); }
 		public FunctionBodyContext functionBody(int i) {
 			return getRuleContext(FunctionBodyContext.class,i);
 		}
@@ -1011,37 +1028,33 @@ public class CfscriptParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(182); match(31);
-			setState(183); match(30);
-			setState(184); expression(0);
-			setState(185); match(18);
-			setState(186); match(35);
-			setState(187); functionBody();
-			setState(188); match(13);
-			setState(193);
+			setState(185); match(K_If);
+			setState(186); match(8);
+			setState(187); expression(0);
+			setState(188); match(20);
+			setState(189); functionBody();
+			setState(194);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(189); match(37);
-					setState(190); ifStatement();
+					setState(190); match(K_Else);
+					setState(191); ifStatement();
 					}
 					} 
 				}
-				setState(195);
+				setState(196);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			}
-			setState(201);
-			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+			setState(199);
+			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
 			case 1:
 				{
-				setState(196); match(37);
-				setState(197); match(35);
+				setState(197); match(K_Else);
 				setState(198); functionBody();
-				setState(199); match(13);
 				}
 				break;
 			}
@@ -1068,9 +1081,14 @@ public class CfscriptParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
+		public TerminalNode K_In() { return getToken(CfscriptParser.K_In, 0); }
 		public VariableStatementContext variableStatement() {
 			return getRuleContext(VariableStatementContext.class,0);
 		}
+		public VariableNameContext variableName() {
+			return getRuleContext(VariableNameContext.class,0);
+		}
+		public TerminalNode K_For() { return getToken(CfscriptParser.K_For, 0); }
 		public FunctionBodyContext functionBody() {
 			return getRuleContext(FunctionBodyContext.class,0);
 		}
@@ -1092,32 +1110,48 @@ public class CfscriptParser extends Parser {
 		ForStatementContext _localctx = new ForStatementContext(_ctx, getState());
 		enterRule(_localctx, 32, RULE_forStatement);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(203); match(47);
-			setState(204); match(30);
-			setState(207);
-			switch (_input.LA(1)) {
-			case 33:
+			setState(221);
+			switch ( getInterpreter().adaptivePredict(_input,20,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
 				{
-				setState(205); variableStatement();
+				setState(201); match(K_For);
+				setState(202); match(8);
+				setState(205);
+				switch (_input.LA(1)) {
+				case K_Var:
+					{
+					setState(203); variableStatement();
+					}
+					break;
+				case Identifier:
+					{
+					setState(204); nonVarVariableStatement();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				setState(207); expression(0);
+				setState(208); match(24);
+				setState(209); expression(0);
+				setState(210); match(20);
+				setState(211); functionBody();
 				}
 				break;
-			case Identifier:
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
 				{
-				setState(206); nonVarVariableStatement();
+				setState(213); match(K_For);
+				setState(214); match(8);
+				setState(215); variableName(0);
+				setState(216); match(K_In);
+				setState(217); expression(0);
+				setState(218); match(20);
+				setState(219); functionBody();
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-			setState(209); expression(0);
-			setState(210); match(49);
-			setState(211); expression(0);
-			setState(212); match(18);
-			setState(213); match(35);
-			setState(214); functionBody();
-			setState(215); match(13);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1135,6 +1169,7 @@ public class CfscriptParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode K_While() { return getToken(CfscriptParser.K_While, 0); }
 		public FunctionBodyContext functionBody() {
 			return getRuleContext(FunctionBodyContext.class,0);
 		}
@@ -1158,13 +1193,11 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(217); match(27);
-			setState(218); match(30);
-			setState(219); expression(0);
-			setState(220); match(18);
-			setState(221); match(35);
-			setState(222); functionBody();
-			setState(223); match(13);
+			setState(223); match(K_While);
+			setState(224); match(8);
+			setState(225); expression(0);
+			setState(226); match(20);
+			setState(227); functionBody();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1202,8 +1235,8 @@ public class CfscriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(225); expression(0);
-			setState(226); match(49);
+			setState(229); expression(0);
+			setState(230); match(24);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1219,21 +1252,30 @@ public class CfscriptParser extends Parser {
 
 	public static class ExpressionContext extends ParserRuleContext {
 		public int _p;
-		public TerminalNode StringLiteral() { return getToken(CfscriptParser.StringLiteral, 0); }
-		public ObjectLiteralContext objectLiteral() {
-			return getRuleContext(ObjectLiteralContext.class,0);
-		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
-		public ArrayLiteralContext arrayLiteral() {
-			return getRuleContext(ArrayLiteralContext.class,0);
-		}
+		public TerminalNode K_New() { return getToken(CfscriptParser.K_New, 0); }
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public ExpressionItemContext expressionItem() {
-			return getRuleContext(ExpressionItemContext.class,0);
+		public TerminalNode K_Eq() { return getToken(CfscriptParser.K_Eq, 0); }
+		public ValidSecondContext validSecond() {
+			return getRuleContext(ValidSecondContext.class,0);
+		}
+		public TerminalNode K_Neq() { return getToken(CfscriptParser.K_Neq, 0); }
+		public TerminalNode K_Lt() { return getToken(CfscriptParser.K_Lt, 0); }
+		public TerminalNode K_And() { return getToken(CfscriptParser.K_And, 0); }
+		public TerminalNode K_Not() { return getToken(CfscriptParser.K_Not, 0); }
+		public TerminalNode K_Gt() { return getToken(CfscriptParser.K_Gt, 0); }
+		public TerminalNode K_Is() { return getToken(CfscriptParser.K_Is, 0); }
+		public TerminalNode K_Gte() { return getToken(CfscriptParser.K_Gte, 0); }
+		public ExpressionFirstContext expressionFirst() {
+			return getRuleContext(ExpressionFirstContext.class,0);
+		}
+		public TerminalNode K_Lte() { return getToken(CfscriptParser.K_Lte, 0); }
+		public ExpressionMethodContext expressionMethod() {
+			return getRuleContext(ExpressionMethodContext.class,0);
 		}
 		public ExpressionContext(ParserRuleContext parent, int invokingState) { super(parent, invokingState); }
 		public ExpressionContext(ParserRuleContext parent, int invokingState, int _p) {
@@ -1263,78 +1305,81 @@ public class CfscriptParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(241);
+			setState(240);
 			switch (_input.LA(1)) {
-			case 23:
+			case K_New:
 				{
-				setState(229); match(23);
-				setState(230); expression(7);
+				setState(233); match(K_New);
+				setState(234); expression(14);
+				}
+				break;
+			case 6:
+			case 22:
+				{
+				setState(235);
+				_la = _input.LA(1);
+				if ( !(_la==6 || _la==22) ) {
+				_errHandler.recoverInline(this);
+				}
+				consume();
+				setState(236); expression(13);
 				}
 				break;
 			case 30:
+			case 32:
 				{
-				setState(231); match(30);
-				setState(232); expression(0);
-				setState(233); match(18);
+				setState(237);
+				_la = _input.LA(1);
+				if ( !(_la==30 || _la==32) ) {
+				_errHandler.recoverInline(this);
+				}
+				consume();
+				setState(238); expression(12);
 				}
 				break;
-			case 5:
-				{
-				setState(235); arrayLiteral();
-				}
-				break;
-			case 35:
-				{
-				setState(236); objectLiteral();
-				}
-				break;
+			case 7:
+			case 8:
+			case 13:
+			case 17:
+			case 26:
+			case K_True:
+			case K_False:
+			case CharacterLiteral:
 			case StringLiteral:
-				{
-				setState(237); match(StringLiteral);
-				}
-				break;
-			case 38:
-				{
-				setState(238); match(38);
-				}
-				break;
-			case 9:
-				{
-				setState(239); match(9);
-				}
-				break;
+			case DecimalLiteral:
+			case FloatingPointLiteral:
 			case Identifier:
 				{
-				setState(240); expressionItem();
+				setState(239); expressionFirst();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(293);
+			setState(318);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(291);
-					switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
+					setState(316);
+					switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(242);
+						if (!(11 >= _localctx._p)) throw new FailedPredicateException(this, "11 >= $_p");
 						setState(243);
-						if (!(20 >= _localctx._p)) throw new FailedPredicateException(this, "20 >= $_p");
-						setState(244);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 4) | (1L << 16) | (1L << 55))) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 5) | (1L << 16) | (1L << 29))) != 0)) ) {
 						_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(245); expression(21);
+						setState(244); expression(12);
 						}
 						break;
 
@@ -1342,15 +1387,15 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(245);
+						if (!(10 >= _localctx._p)) throw new FailedPredicateException(this, "10 >= $_p");
 						setState(246);
-						if (!(19 >= _localctx._p)) throw new FailedPredicateException(this, "19 >= $_p");
-						setState(247);
 						_la = _input.LA(1);
-						if ( !(_la==26 || _la==46) ) {
+						if ( !(_la==6 || _la==22) ) {
 						_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(248); expression(20);
+						setState(247); expression(11);
 						}
 						break;
 
@@ -1358,15 +1403,26 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(249);
-						if (!(18 >= _localctx._p)) throw new FailedPredicateException(this, "18 >= $_p");
-						setState(250);
-						_la = _input.LA(1);
-						if ( !(_la==12 || _la==40) ) {
-						_errHandler.recoverInline(this);
+						setState(248);
+						if (!(9 >= _localctx._p)) throw new FailedPredicateException(this, "9 >= $_p");
+						setState(253);
+						switch (_input.LA(1)) {
+						case 10:
+							{
+							setState(249); match(10);
+							setState(250); match(10);
+							}
+							break;
+						case 28:
+							{
+							setState(251); match(28);
+							setState(252); match(28);
+							}
+							break;
+						default:
+							throw new NoViableAltException(this);
 						}
-						consume();
-						setState(251); expression(19);
+						setState(255); expression(10);
 						}
 						break;
 
@@ -1374,15 +1430,61 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(252);
-						if (!(17 >= _localctx._p)) throw new FailedPredicateException(this, "17 >= $_p");
-						setState(253);
-						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 11) | (1L << 15) | (1L << 19) | (1L << 21) | (1L << 32) | (1L << 52) | (1L << 56))) != 0)) ) {
-						_errHandler.recoverInline(this);
+						setState(256);
+						if (!(8 >= _localctx._p)) throw new FailedPredicateException(this, "8 >= $_p");
+						setState(267);
+						switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
+						case 1:
+							{
+							setState(257); match(10);
+							}
+							break;
+
+						case 2:
+							{
+							setState(258); match(28);
+							}
+							break;
+
+						case 3:
+							{
+							setState(259); match(10);
+							setState(260); match(23);
+							}
+							break;
+
+						case 4:
+							{
+							setState(261); match(28);
+							setState(262); match(23);
+							}
+							break;
+
+						case 5:
+							{
+							setState(263); match(K_Gt);
+							}
+							break;
+
+						case 6:
+							{
+							setState(264); match(K_Gte);
+							}
+							break;
+
+						case 7:
+							{
+							setState(265); match(K_Lt);
+							}
+							break;
+
+						case 8:
+							{
+							setState(266); match(K_Lte);
+							}
+							break;
 						}
-						consume();
-						setState(254); expression(18);
+						setState(269); expression(9);
 						}
 						break;
 
@@ -1390,48 +1492,50 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(255);
-						if (!(16 >= _localctx._p)) throw new FailedPredicateException(this, "16 >= $_p");
-						setState(263);
-						switch ( getInterpreter().adaptivePredict(_input,20,_ctx) ) {
+						setState(270);
+						if (!(7 >= _localctx._p)) throw new FailedPredicateException(this, "7 >= $_p");
+						setState(280);
+						switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 						case 1:
 							{
-							setState(256); match(10);
+							setState(271); match(32);
+							setState(272); match(23);
 							}
 							break;
 
 						case 2:
 							{
-							setState(257); match(54);
+							setState(273); match(23);
+							setState(274); match(23);
 							}
 							break;
 
 						case 3:
 							{
-							setState(258); match(14);
+							setState(275); match(K_Eq);
 							}
 							break;
 
 						case 4:
 							{
-							setState(259); match(53);
+							setState(276); match(K_Neq);
 							}
 							break;
 
 						case 5:
 							{
-							setState(260); match(43);
+							setState(277); match(K_Is);
 							}
 							break;
 
 						case 6:
 							{
-							setState(261); match(43);
-							setState(262); match(29);
+							setState(278); match(K_Is);
+							setState(279); match(K_Not);
 							}
 							break;
 						}
-						setState(265); expression(17);
+						setState(282); expression(8);
 						}
 						break;
 
@@ -1439,15 +1543,15 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(266);
-						if (!(15 >= _localctx._p)) throw new FailedPredicateException(this, "15 >= $_p");
-						setState(267);
+						setState(283);
+						if (!(6 >= _localctx._p)) throw new FailedPredicateException(this, "6 >= $_p");
+						setState(284);
 						_la = _input.LA(1);
-						if ( !(_la==2 || _la==36) ) {
+						if ( !(_la==2 || _la==K_And) ) {
 						_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(268); expression(16);
+						setState(285); expression(7);
 						}
 						break;
 
@@ -1455,10 +1559,10 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(269);
-						if (!(14 >= _localctx._p)) throw new FailedPredicateException(this, "14 >= $_p");
-						setState(270); match(42);
-						setState(271); expression(15);
+						setState(286);
+						if (!(5 >= _localctx._p)) throw new FailedPredicateException(this, "5 >= $_p");
+						setState(287); match(18);
+						setState(288); expression(6);
 						}
 						break;
 
@@ -1466,10 +1570,10 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(272);
-						if (!(13 >= _localctx._p)) throw new FailedPredicateException(this, "13 >= $_p");
-						setState(273); match(22);
-						setState(274); expression(14);
+						setState(289);
+						if (!(4 >= _localctx._p)) throw new FailedPredicateException(this, "4 >= $_p");
+						setState(290); match(31);
+						setState(291); expression(5);
 						}
 						break;
 
@@ -1477,10 +1581,10 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(275);
-						if (!(12 >= _localctx._p)) throw new FailedPredicateException(this, "12 >= $_p");
-						setState(276); match(50);
-						setState(277); expression(13);
+						setState(292);
+						if (!(3 >= _localctx._p)) throw new FailedPredicateException(this, "3 >= $_p");
+						setState(293); match(25);
+						setState(294); expression(4);
 						}
 						break;
 
@@ -1488,10 +1592,10 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(278);
-						if (!(11 >= _localctx._p)) throw new FailedPredicateException(this, "11 >= $_p");
-						setState(279); match(51);
-						setState(280); expression(12);
+						setState(295);
+						if (!(2 >= _localctx._p)) throw new FailedPredicateException(this, "2 >= $_p");
+						setState(296); match(27);
+						setState(297); expression(3);
 						}
 						break;
 
@@ -1499,12 +1603,12 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(281);
-						if (!(10 >= _localctx._p)) throw new FailedPredicateException(this, "10 >= $_p");
-						setState(282); match(34);
-						setState(283); expression(0);
-						setState(284); match(28);
-						setState(285); expression(11);
+						setState(298);
+						if (!(1 >= _localctx._p)) throw new FailedPredicateException(this, "1 >= $_p");
+						setState(299); match(12);
+						setState(300); expression(0);
+						setState(301); match(9);
+						setState(302); expression(2);
 						}
 						break;
 
@@ -1512,9 +1616,10 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(287);
-						if (!(9 >= _localctx._p)) throw new FailedPredicateException(this, "9 >= $_p");
-						setState(288); match(39);
+						setState(304);
+						if (!(18 >= _localctx._p)) throw new FailedPredicateException(this, "18 >= $_p");
+						setState(305); match(21);
+						setState(306); validSecond();
 						}
 						break;
 
@@ -1522,17 +1627,44 @@ public class CfscriptParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(289);
-						if (!(8 >= _localctx._p)) throw new FailedPredicateException(this, "8 >= $_p");
-						setState(290); match(7);
+						setState(307);
+						if (!(17 >= _localctx._p)) throw new FailedPredicateException(this, "17 >= $_p");
+						setState(308); match(7);
+						setState(309); expression(0);
+						setState(310); match(1);
+						}
+						break;
+
+					case 14:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(312);
+						if (!(16 >= _localctx._p)) throw new FailedPredicateException(this, "16 >= $_p");
+						setState(313); expressionMethod();
+						}
+						break;
+
+					case 15:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState, _p);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(314);
+						if (!(15 >= _localctx._p)) throw new FailedPredicateException(this, "15 >= $_p");
+						setState(315);
+						_la = _input.LA(1);
+						if ( !(_la==11 || _la==15) ) {
+						_errHandler.recoverInline(this);
+						}
+						consume();
 						}
 						break;
 					}
 					} 
 				}
-				setState(295);
+				setState(320);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
 			}
 			}
 		}
@@ -1547,155 +1679,61 @@ public class CfscriptParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ExpressionItemContext extends ParserRuleContext {
-		public List<ExpressionItemSuffixContext> expressionItemSuffix() {
-			return getRuleContexts(ExpressionItemSuffixContext.class);
-		}
-		public ExpressionItemSuffixContext expressionItemSuffix(int i) {
-			return getRuleContext(ExpressionItemSuffixContext.class,i);
-		}
-		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
-		public ExpressionItemContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expressionItem; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterExpressionItem(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitExpressionItem(this);
-		}
-	}
-
-	public final ExpressionItemContext expressionItem() throws RecognitionException {
-		ExpressionItemContext _localctx = new ExpressionItemContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_expressionItem);
-		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(296); match(Identifier);
-			setState(300);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,23,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(297); expressionItemSuffix();
-					}
-					} 
-				}
-				setState(302);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,23,_ctx);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ExpressionItemSuffixContext extends ParserRuleContext {
+	public static class ExpressionFirstContext extends ParserRuleContext {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public ExpressionItemContext expressionItem() {
-			return getRuleContext(ExpressionItemContext.class,0);
+		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
+		public LiteralContext literal() {
+			return getRuleContext(LiteralContext.class,0);
 		}
-		public MethodArgumentContext methodArgument(int i) {
-			return getRuleContext(MethodArgumentContext.class,i);
-		}
-		public TerminalNode ArrayIndex() { return getToken(CfscriptParser.ArrayIndex, 0); }
-		public List<MethodArgumentContext> methodArgument() {
-			return getRuleContexts(MethodArgumentContext.class);
-		}
-		public ExpressionItemSuffixContext(ParserRuleContext parent, int invokingState) {
+		public ExpressionFirstContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expressionItemSuffix; }
+		@Override public int getRuleIndex() { return RULE_expressionFirst; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterExpressionItemSuffix(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterExpressionFirst(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitExpressionItemSuffix(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitExpressionFirst(this);
 		}
 	}
 
-	public final ExpressionItemSuffixContext expressionItemSuffix() throws RecognitionException {
-		ExpressionItemSuffixContext _localctx = new ExpressionItemSuffixContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_expressionItemSuffix);
-		int _la;
+	public final ExpressionFirstContext expressionFirst() throws RecognitionException {
+		ExpressionFirstContext _localctx = new ExpressionFirstContext(_ctx, getState());
+		enterRule(_localctx, 40, RULE_expressionFirst);
 		try {
-			setState(324);
+			setState(327);
 			switch (_input.LA(1)) {
-			case 45:
+			case 8:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(303); match(45);
-				setState(304); expressionItem();
+				setState(321); match(8);
+				setState(322); expression(0);
+				setState(323); match(20);
 				}
 				break;
-			case 5:
+			case 7:
+			case 13:
+			case 17:
+			case 26:
+			case K_True:
+			case K_False:
+			case CharacterLiteral:
+			case StringLiteral:
+			case DecimalLiteral:
+			case FloatingPointLiteral:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(305); match(5);
-				setState(306); expression(0);
-				setState(307); match(24);
+				setState(325); literal();
 				}
 				break;
-			case ArrayIndex:
+			case Identifier:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(309); match(ArrayIndex);
-				}
-				break;
-			case 3:
-			case 30:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(322);
-				switch (_input.LA(1)) {
-				case 3:
-					{
-					setState(310); match(3);
-					}
-					break;
-				case 30:
-					{
-					setState(311); match(30);
-					setState(312); methodArgument();
-					setState(317);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					while (_la==25) {
-						{
-						{
-						setState(313); match(25);
-						setState(314); methodArgument();
-						}
-						}
-						setState(319);
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-					}
-					setState(320); match(18);
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
+				setState(326); match(Identifier);
 				}
 				break;
 			default:
@@ -1713,67 +1751,55 @@ public class CfscriptParser extends Parser {
 		return _localctx;
 	}
 
-	public static class MethodCallContext extends ParserRuleContext {
-		public MethodArgumentContext methodArgument(int i) {
-			return getRuleContext(MethodArgumentContext.class,i);
-		}
+	public static class ValidSecondContext extends ParserRuleContext {
+		public TerminalNode K_New() { return getToken(CfscriptParser.K_New, 0); }
+		public TerminalNode K_Eq() { return getToken(CfscriptParser.K_Eq, 0); }
+		public TerminalNode K_For() { return getToken(CfscriptParser.K_For, 0); }
+		public TerminalNode K_Property() { return getToken(CfscriptParser.K_Property, 0); }
+		public TerminalNode K_Lt() { return getToken(CfscriptParser.K_Lt, 0); }
+		public TerminalNode K_And() { return getToken(CfscriptParser.K_And, 0); }
+		public TerminalNode K_Not() { return getToken(CfscriptParser.K_Not, 0); }
+		public TerminalNode K_Else() { return getToken(CfscriptParser.K_Else, 0); }
+		public TerminalNode K_Gt() { return getToken(CfscriptParser.K_Gt, 0); }
+		public TerminalNode K_While() { return getToken(CfscriptParser.K_While, 0); }
+		public TerminalNode K_Var() { return getToken(CfscriptParser.K_Var, 0); }
+		public TerminalNode K_Is() { return getToken(CfscriptParser.K_Is, 0); }
+		public TerminalNode K_Return() { return getToken(CfscriptParser.K_Return, 0); }
+		public TerminalNode K_Gte() { return getToken(CfscriptParser.K_Gte, 0); }
+		public TerminalNode K_True() { return getToken(CfscriptParser.K_True, 0); }
+		public TerminalNode K_Lte() { return getToken(CfscriptParser.K_Lte, 0); }
 		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
-		public List<MethodArgumentContext> methodArgument() {
-			return getRuleContexts(MethodArgumentContext.class);
-		}
-		public MethodCallContext(ParserRuleContext parent, int invokingState) {
+		public TerminalNode K_False() { return getToken(CfscriptParser.K_False, 0); }
+		public TerminalNode K_If() { return getToken(CfscriptParser.K_If, 0); }
+		public TerminalNode K_Savecontent() { return getToken(CfscriptParser.K_Savecontent, 0); }
+		public TerminalNode K_Component() { return getToken(CfscriptParser.K_Component, 0); }
+		public ValidSecondContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_methodCall; }
+		@Override public int getRuleIndex() { return RULE_validSecond; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterMethodCall(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterValidSecond(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitMethodCall(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitValidSecond(this);
 		}
 	}
 
-	public final MethodCallContext methodCall() throws RecognitionException {
-		MethodCallContext _localctx = new MethodCallContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_methodCall);
+	public final ValidSecondContext validSecond() throws RecognitionException {
+		ValidSecondContext _localctx = new ValidSecondContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_validSecond);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(326); match(Identifier);
-			setState(339);
-			switch (_input.LA(1)) {
-			case 3:
-				{
-				setState(327); match(3);
-				}
-				break;
-			case 30:
-				{
-				setState(328); match(30);
-				setState(329); methodArgument();
-				setState(334);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==25) {
-					{
-					{
-					setState(330); match(25);
-					setState(331); methodArgument();
-					}
-					}
-					setState(336);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(337); match(18);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			setState(329);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << K_Return) | (1L << K_If) | (1L << K_Else) | (1L << K_For) | (1L << K_While) | (1L << K_Savecontent) | (1L << K_Var) | (1L << K_Component) | (1L << K_Property) | (1L << K_Gt) | (1L << K_Lt) | (1L << K_Gte) | (1L << K_Lte) | (1L << K_Eq) | (1L << K_Not) | (1L << K_Is) | (1L << K_And) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << Identifier))) != 0)) ) {
+			_errHandler.recoverInline(this);
 			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1787,46 +1813,197 @@ public class CfscriptParser extends Parser {
 		return _localctx;
 	}
 
-	public static class MethodArgumentContext extends ParserRuleContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+	public static class ExpressionMethodContext extends ParserRuleContext {
+		public ValidSecondContext validSecond(int i) {
+			return getRuleContext(ValidSecondContext.class,i);
 		}
-		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
-		public MethodArgumentContext(ParserRuleContext parent, int invokingState) {
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ValidSecondContext> validSecond() {
+			return getRuleContexts(ValidSecondContext.class);
+		}
+		public ExpressionMethodContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_methodArgument; }
+		@Override public int getRuleIndex() { return RULE_expressionMethod; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterMethodArgument(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterExpressionMethod(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitMethodArgument(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitExpressionMethod(this);
 		}
 	}
 
-	public final MethodArgumentContext methodArgument() throws RecognitionException {
-		MethodArgumentContext _localctx = new MethodArgumentContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_methodArgument);
+	public final ExpressionMethodContext expressionMethod() throws RecognitionException {
+		ExpressionMethodContext _localctx = new ExpressionMethodContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_expressionMethod);
+		int _la;
 		try {
-			setState(345);
-			switch ( getInterpreter().adaptivePredict(_input,29,_ctx) ) {
+			setState(360);
+			switch ( getInterpreter().adaptivePredict(_input,31,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(341); match(Identifier);
-				setState(342); match(20);
-				setState(343); expression(0);
+				setState(331); match(3);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(344); expression(0);
+				setState(332); match(8);
+				setState(334);
+				_la = _input.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 7) | (1L << 8) | (1L << 13) | (1L << 17) | (1L << 22) | (1L << 26) | (1L << 30) | (1L << 32) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << DecimalLiteral) | (1L << FloatingPointLiteral) | (1L << Identifier))) != 0)) {
+					{
+					setState(333); expression(0);
+					}
+				}
+
+				setState(340);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==4) {
+					{
+					{
+					setState(336); match(4);
+					setState(337); expression(0);
+					}
+					}
+					setState(342);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(343); match(20);
 				}
 				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(344); match(8);
+				setState(345); validSecond();
+				setState(346); match(23);
+				setState(347); expression(0);
+				setState(355);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==4) {
+					{
+					{
+					setState(348); match(4);
+					setState(349); validSecond();
+					setState(350); match(23);
+					setState(351); expression(0);
+					}
+					}
+					setState(357);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(358); match(20);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LiteralContext extends ParserRuleContext {
+		public TerminalNode StringLiteral() { return getToken(CfscriptParser.StringLiteral, 0); }
+		public ObjectLiteralContext objectLiteral() {
+			return getRuleContext(ObjectLiteralContext.class,0);
+		}
+		public ArrayLiteralContext arrayLiteral() {
+			return getRuleContext(ArrayLiteralContext.class,0);
+		}
+		public TerminalNode DecimalLiteral() { return getToken(CfscriptParser.DecimalLiteral, 0); }
+		public BooleanLiteralContext booleanLiteral() {
+			return getRuleContext(BooleanLiteralContext.class,0);
+		}
+		public TerminalNode CharacterLiteral() { return getToken(CfscriptParser.CharacterLiteral, 0); }
+		public TerminalNode FloatingPointLiteral() { return getToken(CfscriptParser.FloatingPointLiteral, 0); }
+		public LiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_literal; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitLiteral(this);
+		}
+	}
+
+	public final LiteralContext literal() throws RecognitionException {
+		LiteralContext _localctx = new LiteralContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_literal);
+		try {
+			setState(369);
+			switch (_input.LA(1)) {
+			case 7:
+			case 17:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(362); arrayLiteral();
+				}
+				break;
+			case 13:
+			case 26:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(363); objectLiteral();
+				}
+				break;
+			case K_True:
+			case K_False:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(364); booleanLiteral();
+				}
+				break;
+			case StringLiteral:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(365); match(StringLiteral);
+				}
+				break;
+			case CharacterLiteral:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(366); match(CharacterLiteral);
+				}
+				break;
+			case DecimalLiteral:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(367); match(DecimalLiteral);
+				}
+				break;
+			case FloatingPointLiteral:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(368); match(FloatingPointLiteral);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1842,6 +2019,7 @@ public class CfscriptParser extends Parser {
 
 	public static class QuotedVariableNameContext extends ParserRuleContext {
 		public TerminalNode StringLiteral() { return getToken(CfscriptParser.StringLiteral, 0); }
+		public TerminalNode CharacterLiteral() { return getToken(CfscriptParser.CharacterLiteral, 0); }
 		public QuotedVariableNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1859,10 +2037,16 @@ public class CfscriptParser extends Parser {
 	public final QuotedVariableNameContext quotedVariableName() throws RecognitionException {
 		QuotedVariableNameContext _localctx = new QuotedVariableNameContext(_ctx, getState());
 		enterRule(_localctx, 48, RULE_quotedVariableName);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(347); match(StringLiteral);
+			setState(371);
+			_la = _input.LA(1);
+			if ( !(_la==CharacterLiteral || _la==StringLiteral) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1877,15 +2061,23 @@ public class CfscriptParser extends Parser {
 	}
 
 	public static class VariableNameContext extends ParserRuleContext {
-		public VariableSuffixContext variableSuffix(int i) {
-			return getRuleContext(VariableSuffixContext.class,i);
+		public int _p;
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
 		}
-		public List<VariableSuffixContext> variableSuffix() {
-			return getRuleContexts(VariableSuffixContext.class);
+		public VariableNameFirstContext variableNameFirst() {
+			return getRuleContext(VariableNameFirstContext.class,0);
 		}
-		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
-		public VariableNameContext(ParserRuleContext parent, int invokingState) {
+		public ValidSecondContext validSecond() {
+			return getRuleContext(ValidSecondContext.class,0);
+		}
+		public VariableNameContext variableName() {
+			return getRuleContext(VariableNameContext.class,0);
+		}
+		public VariableNameContext(ParserRuleContext parent, int invokingState) { super(parent, invokingState); }
+		public VariableNameContext(ParserRuleContext parent, int invokingState, int _p) {
 			super(parent, invokingState);
+			this._p = _p;
 		}
 		@Override public int getRuleIndex() { return RULE_variableName; }
 		@Override
@@ -1898,28 +2090,59 @@ public class CfscriptParser extends Parser {
 		}
 	}
 
-	public final VariableNameContext variableName() throws RecognitionException {
-		VariableNameContext _localctx = new VariableNameContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_variableName);
+	public final VariableNameContext variableName(int _p) throws RecognitionException {
+		ParserRuleContext _parentctx = _ctx;
+		int _parentState = getState();
+		VariableNameContext _localctx = new VariableNameContext(_ctx, _parentState, _p);
+		VariableNameContext _prevctx = _localctx;
+		int _startState = 50;
+		enterRecursionRule(_localctx, RULE_variableName);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(349); match(Identifier);
-			setState(353);
+			{
+			setState(374); variableNameFirst();
+			}
+			_ctx.stop = _input.LT(-1);
+			setState(386);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,30,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,34,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
 				if ( _alt==1 ) {
+					if ( _parseListeners!=null ) triggerExitRuleEvent();
+					_prevctx = _localctx;
 					{
-					{
-					setState(350); variableSuffix();
+					setState(384);
+					switch ( getInterpreter().adaptivePredict(_input,33,_ctx) ) {
+					case 1:
+						{
+						_localctx = new VariableNameContext(_parentctx, _parentState, _p);
+						pushNewRecursionContext(_localctx, _startState, RULE_variableName);
+						setState(376);
+						if (!(2 >= _localctx._p)) throw new FailedPredicateException(this, "2 >= $_p");
+						setState(377); match(21);
+						setState(378); validSecond();
+						}
+						break;
+
+					case 2:
+						{
+						_localctx = new VariableNameContext(_parentctx, _parentState, _p);
+						pushNewRecursionContext(_localctx, _startState, RULE_variableName);
+						setState(379);
+						if (!(1 >= _localctx._p)) throw new FailedPredicateException(this, "1 >= $_p");
+						setState(380); match(7);
+						setState(381); expression(0);
+						setState(382); match(1);
+						}
+						break;
 					}
 					} 
 				}
-				setState(355);
+				setState(388);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,30,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,34,_ctx);
 			}
 			}
 		}
@@ -1929,51 +2152,34 @@ public class CfscriptParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			exitRule();
+			unrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
 	}
 
-	public static class VariableSuffixContext extends ParserRuleContext {
-		public VariableNameContext variableName() {
-			return getRuleContext(VariableNameContext.class,0);
-		}
-		public TerminalNode ArrayIndex() { return getToken(CfscriptParser.ArrayIndex, 0); }
-		public VariableSuffixContext(ParserRuleContext parent, int invokingState) {
+	public static class VariableNameFirstContext extends ParserRuleContext {
+		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
+		public VariableNameFirstContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_variableSuffix; }
+		@Override public int getRuleIndex() { return RULE_variableNameFirst; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterVariableSuffix(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterVariableNameFirst(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitVariableSuffix(this);
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitVariableNameFirst(this);
 		}
 	}
 
-	public final VariableSuffixContext variableSuffix() throws RecognitionException {
-		VariableSuffixContext _localctx = new VariableSuffixContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_variableSuffix);
+	public final VariableNameFirstContext variableNameFirst() throws RecognitionException {
+		VariableNameFirstContext _localctx = new VariableNameFirstContext(_ctx, getState());
+		enterRule(_localctx, 52, RULE_variableNameFirst);
 		try {
-			setState(359);
-			switch (_input.LA(1)) {
-			case ArrayIndex:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(356); match(ArrayIndex);
-				}
-				break;
-			case 45:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(357); match(45);
-				setState(358); variableName();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(389); match(Identifier);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2013,25 +2219,45 @@ public class CfscriptParser extends Parser {
 		enterRule(_localctx, 54, RULE_arrayLiteral);
 		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(361); match(5);
-			setState(362); expression(0);
-			setState(367);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==25) {
+			setState(404);
+			switch (_input.LA(1)) {
+			case 7:
+				enterOuterAlt(_localctx, 1);
 				{
-				{
-				setState(363); match(25);
-				setState(364); expression(0);
-				}
-				}
-				setState(369);
-				_errHandler.sync(this);
+				setState(391); match(7);
+				setState(400);
 				_la = _input.LA(1);
-			}
-			setState(370); match(24);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 7) | (1L << 8) | (1L << 13) | (1L << 17) | (1L << 22) | (1L << 26) | (1L << 30) | (1L << 32) | (1L << K_True) | (1L << K_False) | (1L << K_New) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << DecimalLiteral) | (1L << FloatingPointLiteral) | (1L << Identifier))) != 0)) {
+					{
+					setState(392); expression(0);
+					setState(397);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+					while (_la==4) {
+						{
+						{
+						setState(393); match(4);
+						setState(394); expression(0);
+						}
+						}
+						setState(399);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+					}
+					}
+				}
+
+				setState(402); match(1);
+				}
+				break;
+			case 17:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(403); match(17);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2075,36 +2301,49 @@ public class CfscriptParser extends Parser {
 		enterRule(_localctx, 56, RULE_objectLiteral);
 		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(372); match(35);
-			setState(385);
-			_la = _input.LA(1);
-			if (_la==Identifier) {
+			setState(423);
+			switch (_input.LA(1)) {
+			case 13:
+				enterOuterAlt(_localctx, 1);
 				{
-				setState(373); match(Identifier);
-				setState(374); match(20);
-				setState(375); expression(0);
-				setState(382);
-				_errHandler.sync(this);
+				setState(406); match(13);
+				setState(419);
 				_la = _input.LA(1);
-				while (_la==25) {
+				if (_la==Identifier) {
 					{
-					{
-					setState(376); match(25);
-					setState(377); match(Identifier);
-					setState(378); match(20);
-					setState(379); expression(0);
-					}
-					}
-					setState(384);
+					setState(407); match(Identifier);
+					setState(408); match(23);
+					setState(409); expression(0);
+					setState(416);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
+					while (_la==4) {
+						{
+						{
+						setState(410); match(4);
+						setState(411); match(Identifier);
+						setState(412); match(23);
+						setState(413); expression(0);
+						}
+						}
+						setState(418);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+					}
+					}
 				}
-				}
-			}
 
-			setState(387); match(13);
+				setState(421); match(14);
+				}
+				break;
+			case 26:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(422); match(26);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2120,6 +2359,7 @@ public class CfscriptParser extends Parser {
 
 	public static class KeyValueContext extends ParserRuleContext {
 		public TerminalNode StringLiteral() { return getToken(CfscriptParser.StringLiteral, 0); }
+		public TerminalNode CharacterLiteral() { return getToken(CfscriptParser.CharacterLiteral, 0); }
 		public TerminalNode Identifier() { return getToken(CfscriptParser.Identifier, 0); }
 		public KeyValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2138,12 +2378,61 @@ public class CfscriptParser extends Parser {
 	public final KeyValueContext keyValue() throws RecognitionException {
 		KeyValueContext _localctx = new KeyValueContext(_ctx, getState());
 		enterRule(_localctx, 58, RULE_keyValue);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(389); match(Identifier);
-			setState(390); match(20);
-			setState(391); match(StringLiteral);
+			setState(425); match(Identifier);
+			setState(426); match(23);
+			setState(427);
+			_la = _input.LA(1);
+			if ( !(_la==CharacterLiteral || _la==StringLiteral) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BooleanLiteralContext extends ParserRuleContext {
+		public TerminalNode K_True() { return getToken(CfscriptParser.K_True, 0); }
+		public TerminalNode K_False() { return getToken(CfscriptParser.K_False, 0); }
+		public BooleanLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_booleanLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).enterBooleanLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CfscriptListener ) ((CfscriptListener)listener).exitBooleanLiteral(this);
+		}
+	}
+
+	public final BooleanLiteralContext booleanLiteral() throws RecognitionException {
+		BooleanLiteralContext _localctx = new BooleanLiteralContext(_ctx, getState());
+		enterRule(_localctx, 60, RULE_booleanLiteral);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(429);
+			_la = _input.LA(1);
+			if ( !(_la==K_True || _la==K_False) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2160,185 +2449,218 @@ public class CfscriptParser extends Parser {
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
 		case 19: return expression_sempred((ExpressionContext)_localctx, predIndex);
+
+		case 25: return variableName_sempred((VariableNameContext)_localctx, predIndex);
 		}
 		return true;
 	}
 	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return 20 >= _localctx._p;
+		case 0: return 11 >= _localctx._p;
 
-		case 1: return 19 >= _localctx._p;
+		case 1: return 10 >= _localctx._p;
 
-		case 2: return 18 >= _localctx._p;
+		case 2: return 9 >= _localctx._p;
 
-		case 3: return 17 >= _localctx._p;
+		case 3: return 8 >= _localctx._p;
 
-		case 4: return 16 >= _localctx._p;
+		case 4: return 7 >= _localctx._p;
 
-		case 5: return 15 >= _localctx._p;
+		case 5: return 6 >= _localctx._p;
 
-		case 6: return 14 >= _localctx._p;
+		case 6: return 5 >= _localctx._p;
 
-		case 7: return 13 >= _localctx._p;
+		case 7: return 4 >= _localctx._p;
 
-		case 8: return 12 >= _localctx._p;
+		case 8: return 3 >= _localctx._p;
 
-		case 9: return 11 >= _localctx._p;
+		case 9: return 2 >= _localctx._p;
 
-		case 10: return 10 >= _localctx._p;
+		case 10: return 1 >= _localctx._p;
 
-		case 11: return 9 >= _localctx._p;
+		case 11: return 18 >= _localctx._p;
 
-		case 12: return 8 >= _localctx._p;
+		case 12: return 17 >= _localctx._p;
+
+		case 13: return 16 >= _localctx._p;
+
+		case 14: return 15 >= _localctx._p;
+		}
+		return true;
+	}
+	private boolean variableName_sempred(VariableNameContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 16: return 1 >= _localctx._p;
+
+		case 15: return 2 >= _localctx._p;
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\2\3?\u018c\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4"+
+		"\2\3@\u01b2\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4"+
 		"\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20"+
 		"\4\21\t\21\4\22\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27"+
 		"\4\30\t\30\4\31\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36"+
-		"\4\37\t\37\3\2\3\2\7\2A\n\2\f\2\16\2D\13\2\3\2\3\2\3\2\3\2\3\3\7\3K\n"+
-		"\3\f\3\16\3N\13\3\3\4\3\4\3\4\5\4S\n\4\3\5\3\5\3\5\3\5\3\5\7\5Z\n\5\f"+
-		"\5\16\5]\13\5\3\5\5\5`\n\5\3\6\5\6c\n\6\3\6\5\6f\n\6\3\6\3\6\3\6\3\6\3"+
-		"\6\3\6\3\6\3\7\3\7\3\b\3\b\3\b\3\b\7\bu\n\b\f\b\16\bx\13\b\3\b\3\b\3\b"+
-		"\5\b}\n\b\3\t\5\t\u0080\n\t\3\t\5\t\u0083\n\t\3\t\3\t\3\t\5\t\u0088\n"+
-		"\t\3\n\3\n\3\13\7\13\u008d\n\13\f\13\16\13\u0090\13\13\3\f\3\f\3\f\3\f"+
-		"\3\f\3\f\3\f\3\f\5\f\u009a\n\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\16\3"+
-		"\16\3\16\5\16\u00a7\n\16\3\16\3\16\3\16\3\16\3\17\3\17\5\17\u00af\n\17"+
-		"\3\17\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21"+
-		"\3\21\3\21\3\21\7\21\u00c2\n\21\f\21\16\21\u00c5\13\21\3\21\3\21\3\21"+
-		"\3\21\3\21\5\21\u00cc\n\21\3\22\3\22\3\22\3\22\5\22\u00d2\n\22\3\22\3"+
-		"\22\3\22\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3"+
-		"\23\3\24\3\24\3\24\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3"+
-		"\25\3\25\3\25\5\25\u00f4\n\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
-		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\5\25\u010a"+
-		"\n\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
-		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\7\25"+
-		"\u0126\n\25\f\25\16\25\u0129\13\25\3\26\3\26\7\26\u012d\n\26\f\26\16\26"+
-		"\u0130\13\26\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3"+
-		"\27\7\27\u013e\n\27\f\27\16\27\u0141\13\27\3\27\3\27\5\27\u0145\n\27\5"+
-		"\27\u0147\n\27\3\30\3\30\3\30\3\30\3\30\3\30\7\30\u014f\n\30\f\30\16\30"+
-		"\u0152\13\30\3\30\3\30\5\30\u0156\n\30\3\31\3\31\3\31\3\31\5\31\u015c"+
-		"\n\31\3\32\3\32\3\33\3\33\7\33\u0162\n\33\f\33\16\33\u0165\13\33\3\34"+
-		"\3\34\3\34\5\34\u016a\n\34\3\35\3\35\3\35\3\35\7\35\u0170\n\35\f\35\16"+
-		"\35\u0173\13\35\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\7\36"+
-		"\u017f\n\36\f\36\16\36\u0182\13\36\5\36\u0184\n\36\3\36\3\36\3\37\3\37"+
-		"\3\37\3\37\3\37\2 \2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60"+
-		"\62\64\668:<\2\t\4\4\4\60\60\4\4\4\60\60\5\6\6\22\2299\4\34\34\60\60\4"+
-		"\16\16**\n\b\b\r\r\21\21\25\25\27\27\"\"\66\66::\4\4\4&&\u01ae\2>\3\2"+
-		"\2\2\4L\3\2\2\2\6R\3\2\2\2\b_\3\2\2\2\nb\3\2\2\2\fn\3\2\2\2\16|\3\2\2"+
-		"\2\20\177\3\2\2\2\22\u0089\3\2\2\2\24\u008e\3\2\2\2\26\u0099\3\2\2\2\30"+
-		"\u009b\3\2\2\2\32\u00a3\3\2\2\2\34\u00ac\3\2\2\2\36\u00b4\3\2\2\2 \u00b8"+
-		"\3\2\2\2\"\u00cd\3\2\2\2$\u00db\3\2\2\2&\u00e3\3\2\2\2(\u00f3\3\2\2\2"+
-		"*\u012a\3\2\2\2,\u0146\3\2\2\2.\u0148\3\2\2\2\60\u015b\3\2\2\2\62\u015d"+
-		"\3\2\2\2\64\u015f\3\2\2\2\66\u0169\3\2\2\28\u016b\3\2\2\2:\u0176\3\2\2"+
-		"\2<\u0187\3\2\2\2>B\7\3\2\2?A\5<\37\2@?\3\2\2\2AD\3\2\2\2B@\3\2\2\2BC"+
-		"\3\2\2\2CE\3\2\2\2DB\3\2\2\2EF\7%\2\2FG\5\4\3\2GH\7\17\2\2H\3\3\2\2\2"+
-		"IK\5\6\4\2JI\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2M\5\3\2\2\2NL\3\2\2"+
-		"\2OS\5\n\6\2PS\5\b\5\2QS\5\26\f\2RO\3\2\2\2RP\3\2\2\2RQ\3\2\2\2S\7\3\2"+
-		"\2\2TU\7+\2\2UV\7=\2\2V`\7\63\2\2W[\7+\2\2XZ\5<\37\2YX\3\2\2\2Z]\3\2\2"+
-		"\2[Y\3\2\2\2[\\\3\2\2\2\\^\3\2\2\2][\3\2\2\2^`\7\63\2\2_T\3\2\2\2_W\3"+
-		"\2\2\2`\t\3\2\2\2ac\7=\2\2ba\3\2\2\2bc\3\2\2\2ce\3\2\2\2df\7=\2\2ed\3"+
-		"\2\2\2ef\3\2\2\2fg\3\2\2\2gh\7.\2\2hi\5\f\7\2ij\5\16\b\2jk\7%\2\2kl\5"+
-		"\24\13\2lm\7\17\2\2m\13\3\2\2\2no\7=\2\2o\r\3\2\2\2pq\7 \2\2qv\5\20\t"+
-		"\2rs\7\33\2\2su\5\20\t\2tr\3\2\2\2ux\3\2\2\2vt\3\2\2\2vw\3\2\2\2wy\3\2"+
-		"\2\2xv\3\2\2\2yz\7\24\2\2z}\3\2\2\2{}\7\5\2\2|p\3\2\2\2|{\3\2\2\2}\17"+
-		"\3\2\2\2~\u0080\7=\2\2\177~\3\2\2\2\177\u0080\3\2\2\2\u0080\u0082\3\2"+
-		"\2\2\u0081\u0083\7=\2\2\u0082\u0081\3\2\2\2\u0082\u0083\3\2\2\2\u0083"+
-		"\u0084\3\2\2\2\u0084\u0087\5\22\n\2\u0085\u0086\7\26\2\2\u0086\u0088\5"+
+		"\4\37\t\37\4 \t \3\2\3\2\7\2C\n\2\f\2\16\2F\13\2\3\2\3\2\3\2\3\2\3\3\7"+
+		"\3M\n\3\f\3\16\3P\13\3\3\4\3\4\3\4\5\4U\n\4\3\5\3\5\3\5\3\5\3\5\7\5\\"+
+		"\n\5\f\5\16\5_\13\5\3\5\5\5b\n\5\3\6\5\6e\n\6\3\6\5\6h\n\6\3\6\3\6\3\6"+
+		"\3\6\3\6\3\7\3\7\3\b\3\b\3\b\3\b\7\bu\n\b\f\b\16\bx\13\b\3\b\3\b\3\b\5"+
+		"\b}\n\b\3\t\5\t\u0080\n\t\3\t\5\t\u0083\n\t\3\t\3\t\3\t\5\t\u0088\n\t"+
+		"\3\n\3\n\3\13\3\13\7\13\u008e\n\13\f\13\16\13\u0091\13\13\3\13\3\13\3"+
+		"\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u009d\n\f\3\r\3\r\3\r\3\r\3\r\3\r\3"+
+		"\16\3\16\3\16\5\16\u00a8\n\16\3\16\3\16\3\16\3\16\3\17\3\17\5\17\u00b0"+
+		"\n\17\3\17\3\17\3\17\3\17\3\20\3\20\5\20\u00b8\n\20\3\20\3\20\3\21\3\21"+
+		"\3\21\3\21\3\21\3\21\3\21\7\21\u00c3\n\21\f\21\16\21\u00c6\13\21\3\21"+
+		"\3\21\5\21\u00ca\n\21\3\22\3\22\3\22\3\22\5\22\u00d0\n\22\3\22\3\22\3"+
+		"\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00e0"+
+		"\n\22\3\23\3\23\3\23\3\23\3\23\3\23\3\24\3\24\3\24\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\5\25\u00f3\n\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\5\25\u0100\n\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\3\25\5\25\u010e\n\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\3\25\5\25\u011b\n\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\7\25\u013f\n\25\f\25\16\25\u0142\13\25\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\5\26\u014a\n\26\3\27\3\27\3\30\3\30\3\30\5\30\u0151\n\30\3\30\3\30\7"+
+		"\30\u0155\n\30\f\30\16\30\u0158\13\30\3\30\3\30\3\30\3\30\3\30\3\30\3"+
+		"\30\3\30\3\30\3\30\7\30\u0164\n\30\f\30\16\30\u0167\13\30\3\30\3\30\5"+
+		"\30\u016b\n\30\3\31\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u0174\n\31\3\32"+
+		"\3\32\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\7\33\u0183"+
+		"\n\33\f\33\16\33\u0186\13\33\3\34\3\34\3\35\3\35\3\35\3\35\7\35\u018e"+
+		"\n\35\f\35\16\35\u0191\13\35\5\35\u0193\n\35\3\35\3\35\5\35\u0197\n\35"+
+		"\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\7\36\u01a1\n\36\f\36\16\36\u01a4"+
+		"\13\36\5\36\u01a6\n\36\3\36\3\36\5\36\u01aa\n\36\3\37\3\37\3\37\3\37\3"+
+		" \3 \3 \2!\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\66"+
+		"8:<>\2\16\4\4\4\30\30\4\4\4\30\30\4\b\b\30\30\4  \"\"\5\7\7\22\22\37\37"+
+		"\4\b\b\30\30\4\4\4\65\65\4\r\r\21\21\6#)+\61\638>>\3:;\3:;\3\66\67\u01e2"+
+		"\2@\3\2\2\2\4N\3\2\2\2\6T\3\2\2\2\ba\3\2\2\2\nd\3\2\2\2\fn\3\2\2\2\16"+
+		"|\3\2\2\2\20\177\3\2\2\2\22\u0089\3\2\2\2\24\u008b\3\2\2\2\26\u009c\3"+
+		"\2\2\2\30\u009e\3\2\2\2\32\u00a4\3\2\2\2\34\u00ad\3\2\2\2\36\u00b5\3\2"+
+		"\2\2 \u00bb\3\2\2\2\"\u00df\3\2\2\2$\u00e1\3\2\2\2&\u00e7\3\2\2\2(\u00f2"+
+		"\3\2\2\2*\u0149\3\2\2\2,\u014b\3\2\2\2.\u016a\3\2\2\2\60\u0173\3\2\2\2"+
+		"\62\u0175\3\2\2\2\64\u0177\3\2\2\2\66\u0187\3\2\2\28\u0196\3\2\2\2:\u01a9"+
+		"\3\2\2\2<\u01ab\3\2\2\2>\u01af\3\2\2\2@D\7+\2\2AC\5<\37\2BA\3\2\2\2CF"+
+		"\3\2\2\2DB\3\2\2\2DE\3\2\2\2EG\3\2\2\2FD\3\2\2\2GH\7\17\2\2HI\5\4\3\2"+
+		"IJ\7\20\2\2J\3\3\2\2\2KM\5\6\4\2LK\3\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2"+
+		"\2O\5\3\2\2\2PN\3\2\2\2QU\5\n\6\2RU\5\b\5\2SU\5\26\f\2TQ\3\2\2\2TR\3\2"+
+		"\2\2TS\3\2\2\2U\7\3\2\2\2VW\7,\2\2WX\7>\2\2Xb\7\32\2\2Y]\7,\2\2Z\\\5<"+
+		"\37\2[Z\3\2\2\2\\_\3\2\2\2][\3\2\2\2]^\3\2\2\2^`\3\2\2\2_]\3\2\2\2`b\7"+
+		"\32\2\2aV\3\2\2\2aY\3\2\2\2b\t\3\2\2\2ce\7>\2\2dc\3\2\2\2de\3\2\2\2eg"+
+		"\3\2\2\2fh\7>\2\2gf\3\2\2\2gh\3\2\2\2hi\3\2\2\2ij\7\25\2\2jk\5\f\7\2k"+
+		"l\5\16\b\2lm\5\24\13\2m\13\3\2\2\2no\7>\2\2o\r\3\2\2\2pq\7\n\2\2qv\5\20"+
+		"\t\2rs\7\6\2\2su\5\20\t\2tr\3\2\2\2ux\3\2\2\2vt\3\2\2\2vw\3\2\2\2wy\3"+
+		"\2\2\2xv\3\2\2\2yz\7\26\2\2z}\3\2\2\2{}\7\5\2\2|p\3\2\2\2|{\3\2\2\2}\17"+
+		"\3\2\2\2~\u0080\7>\2\2\177~\3\2\2\2\177\u0080\3\2\2\2\u0080\u0082\3\2"+
+		"\2\2\u0081\u0083\7>\2\2\u0082\u0081\3\2\2\2\u0082\u0083\3\2\2\2\u0083"+
+		"\u0084\3\2\2\2\u0084\u0087\5\22\n\2\u0085\u0086\7\31\2\2\u0086\u0088\5"+
 		"(\25\2\u0087\u0085\3\2\2\2\u0087\u0088\3\2\2\2\u0088\21\3\2\2\2\u0089"+
-		"\u008a\7=\2\2\u008a\23\3\2\2\2\u008b\u008d\5\26\f\2\u008c\u008b\3\2\2"+
-		"\2\u008d\u0090\3\2\2\2\u008e\u008c\3\2\2\2\u008e\u008f\3\2\2\2\u008f\25"+
-		"\3\2\2\2\u0090\u008e\3\2\2\2\u0091\u009a\5\32\16\2\u0092\u009a\5\34\17"+
-		"\2\u0093\u009a\5&\24\2\u0094\u009a\5\36\20\2\u0095\u009a\5 \21\2\u0096"+
-		"\u009a\5\"\22\2\u0097\u009a\5$\23\2\u0098\u009a\5\30\r\2\u0099\u0091\3"+
-		"\2\2\2\u0099\u0092\3\2\2\2\u0099\u0093\3\2\2\2\u0099\u0094\3\2\2\2\u0099"+
-		"\u0095\3\2\2\2\u0099\u0096\3\2\2\2\u0099\u0097\3\2\2\2\u0099\u0098\3\2"+
-		"\2\2\u009a\27\3\2\2\2\u009b\u009c\7\n\2\2\u009c\u009d\7\23\2\2\u009d\u009e"+
-		"\7\26\2\2\u009e\u009f\5\62\32\2\u009f\u00a0\7%\2\2\u00a0\u00a1\5\24\13"+
-		"\2\u00a1\u00a2\7\17\2\2\u00a2\31\3\2\2\2\u00a3\u00a4\7#\2\2\u00a4\u00a6"+
-		"\5\64\33\2\u00a5\u00a7\t\2\2\2\u00a6\u00a5\3\2\2\2\u00a6\u00a7\3\2\2\2"+
-		"\u00a7\u00a8\3\2\2\2\u00a8\u00a9\7\26\2\2\u00a9\u00aa\5(\25\2\u00aa\u00ab"+
-		"\7\63\2\2\u00ab\33\3\2\2\2\u00ac\u00ae\5\64\33\2\u00ad\u00af\t\3\2\2\u00ae"+
-		"\u00ad\3\2\2\2\u00ae\u00af\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0\u00b1\7\26"+
-		"\2\2\u00b1\u00b2\5(\25\2\u00b2\u00b3\7\63\2\2\u00b3\35\3\2\2\2\u00b4\u00b5"+
-		"\7\62\2\2\u00b5\u00b6\5(\25\2\u00b6\u00b7\7\63\2\2\u00b7\37\3\2\2\2\u00b8"+
-		"\u00b9\7!\2\2\u00b9\u00ba\7 \2\2\u00ba\u00bb\5(\25\2\u00bb\u00bc\7\24"+
-		"\2\2\u00bc\u00bd\7%\2\2\u00bd\u00be\5\24\13\2\u00be\u00c3\7\17\2\2\u00bf"+
-		"\u00c0\7\'\2\2\u00c0\u00c2\5 \21\2\u00c1\u00bf\3\2\2\2\u00c2\u00c5\3\2"+
-		"\2\2\u00c3\u00c1\3\2\2\2\u00c3\u00c4\3\2\2\2\u00c4\u00cb\3\2\2\2\u00c5"+
-		"\u00c3\3\2\2\2\u00c6\u00c7\7\'\2\2\u00c7\u00c8\7%\2\2\u00c8\u00c9\5\24"+
-		"\13\2\u00c9\u00ca\7\17\2\2\u00ca\u00cc\3\2\2\2\u00cb\u00c6\3\2\2\2\u00cb"+
-		"\u00cc\3\2\2\2\u00cc!\3\2\2\2\u00cd\u00ce\7\61\2\2\u00ce\u00d1\7 \2\2"+
-		"\u00cf\u00d2\5\32\16\2\u00d0\u00d2\5\34\17\2\u00d1\u00cf\3\2\2\2\u00d1"+
-		"\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d4\5(\25\2\u00d4\u00d5\7\63"+
-		"\2\2\u00d5\u00d6\5(\25\2\u00d6\u00d7\7\24\2\2\u00d7\u00d8\7%\2\2\u00d8"+
-		"\u00d9\5\24\13\2\u00d9\u00da\7\17\2\2\u00da#\3\2\2\2\u00db\u00dc\7\35"+
-		"\2\2\u00dc\u00dd\7 \2\2\u00dd\u00de\5(\25\2\u00de\u00df\7\24\2\2\u00df"+
-		"\u00e0\7%\2\2\u00e0\u00e1\5\24\13\2\u00e1\u00e2\7\17\2\2\u00e2%\3\2\2"+
-		"\2\u00e3\u00e4\5(\25\2\u00e4\u00e5\7\63\2\2\u00e5\'\3\2\2\2\u00e6\u00e7"+
-		"\b\25\1\2\u00e7\u00e8\7\31\2\2\u00e8\u00f4\5(\25\2\u00e9\u00ea\7 \2\2"+
-		"\u00ea\u00eb\5(\25\2\u00eb\u00ec\7\24\2\2\u00ec\u00f4\3\2\2\2\u00ed\u00f4"+
-		"\58\35\2\u00ee\u00f4\5:\36\2\u00ef\u00f4\7;\2\2\u00f0\u00f4\7(\2\2\u00f1"+
-		"\u00f4\7\13\2\2\u00f2\u00f4\5*\26\2\u00f3\u00e6\3\2\2\2\u00f3\u00e9\3"+
-		"\2\2\2\u00f3\u00ed\3\2\2\2\u00f3\u00ee\3\2\2\2\u00f3\u00ef\3\2\2\2\u00f3"+
-		"\u00f0\3\2\2\2\u00f3\u00f1\3\2\2\2\u00f3\u00f2\3\2\2\2\u00f4\u0127\3\2"+
-		"\2\2\u00f5\u00f6\6\25\2\3\u00f6\u00f7\t\4\2\2\u00f7\u0126\5(\25\2\u00f8"+
-		"\u00f9\6\25\3\3\u00f9\u00fa\t\5\2\2\u00fa\u0126\5(\25\2\u00fb\u00fc\6"+
-		"\25\4\3\u00fc\u00fd\t\6\2\2\u00fd\u0126\5(\25\2\u00fe\u00ff\6\25\5\3\u00ff"+
-		"\u0100\t\7\2\2\u0100\u0126\5(\25\2\u0101\u0109\6\25\6\3\u0102\u010a\7"+
-		"\f\2\2\u0103\u010a\78\2\2\u0104\u010a\7\20\2\2\u0105\u010a\7\67\2\2\u0106"+
-		"\u010a\7-\2\2\u0107\u0108\7-\2\2\u0108\u010a\7\37\2\2\u0109\u0102\3\2"+
-		"\2\2\u0109\u0103\3\2\2\2\u0109\u0104\3\2\2\2\u0109\u0105\3\2\2\2\u0109"+
-		"\u0106\3\2\2\2\u0109\u0107\3\2\2\2\u010a\u010b\3\2\2\2\u010b\u0126\5("+
-		"\25\2\u010c\u010d\6\25\7\3\u010d\u010e\t\b\2\2\u010e\u0126\5(\25\2\u010f"+
-		"\u0110\6\25\b\3\u0110\u0111\7,\2\2\u0111\u0126\5(\25\2\u0112\u0113\6\25"+
-		"\t\3\u0113\u0114\7\30\2\2\u0114\u0126\5(\25\2\u0115\u0116\6\25\n\3\u0116"+
-		"\u0117\7\64\2\2\u0117\u0126\5(\25\2\u0118\u0119\6\25\13\3\u0119\u011a"+
-		"\7\65\2\2\u011a\u0126\5(\25\2\u011b\u011c\6\25\f\3\u011c\u011d\7$\2\2"+
-		"\u011d\u011e\5(\25\2\u011e\u011f\7\36\2\2\u011f\u0120\5(\25\2\u0120\u0126"+
-		"\3\2\2\2\u0121\u0122\6\25\r\3\u0122\u0126\7)\2\2\u0123\u0124\6\25\16\3"+
-		"\u0124\u0126\7\t\2\2\u0125\u00f5\3\2\2\2\u0125\u00f8\3\2\2\2\u0125\u00fb"+
-		"\3\2\2\2\u0125\u00fe\3\2\2\2\u0125\u0101\3\2\2\2\u0125\u010c\3\2\2\2\u0125"+
-		"\u010f\3\2\2\2\u0125\u0112\3\2\2\2\u0125\u0115\3\2\2\2\u0125\u0118\3\2"+
-		"\2\2\u0125\u011b\3\2\2\2\u0125\u0121\3\2\2\2\u0125\u0123\3\2\2\2\u0126"+
-		"\u0129\3\2\2\2\u0127\u0125\3\2\2\2\u0127\u0128\3\2\2\2\u0128)\3\2\2\2"+
-		"\u0129\u0127\3\2\2\2\u012a\u012e\7=\2\2\u012b\u012d\5,\27\2\u012c\u012b"+
-		"\3\2\2\2\u012d\u0130\3\2\2\2\u012e\u012c\3\2\2\2\u012e\u012f\3\2\2\2\u012f"+
-		"+\3\2\2\2\u0130\u012e\3\2\2\2\u0131\u0132\7/\2\2\u0132\u0147\5*\26\2\u0133"+
-		"\u0134\7\7\2\2\u0134\u0135\5(\25\2\u0135\u0136\7\32\2\2\u0136\u0147\3"+
-		"\2\2\2\u0137\u0147\7<\2\2\u0138\u0145\7\5\2\2\u0139\u013a\7 \2\2\u013a"+
-		"\u013f\5\60\31\2\u013b\u013c\7\33\2\2\u013c\u013e\5\60\31\2\u013d\u013b"+
-		"\3\2\2\2\u013e\u0141\3\2\2\2\u013f\u013d\3\2\2\2\u013f\u0140\3\2\2\2\u0140"+
-		"\u0142\3\2\2\2\u0141\u013f\3\2\2\2\u0142\u0143\7\24\2\2\u0143\u0145\3"+
-		"\2\2\2\u0144\u0138\3\2\2\2\u0144\u0139\3\2\2\2\u0145\u0147\3\2\2\2\u0146"+
-		"\u0131\3\2\2\2\u0146\u0133\3\2\2\2\u0146\u0137\3\2\2\2\u0146\u0144\3\2"+
-		"\2\2\u0147-\3\2\2\2\u0148\u0155\7=\2\2\u0149\u0156\7\5\2\2\u014a\u014b"+
-		"\7 \2\2\u014b\u0150\5\60\31\2\u014c\u014d\7\33\2\2\u014d\u014f\5\60\31"+
-		"\2\u014e\u014c\3\2\2\2\u014f\u0152\3\2\2\2\u0150\u014e\3\2\2\2\u0150\u0151"+
-		"\3\2\2\2\u0151\u0153\3\2\2\2\u0152\u0150\3\2\2\2\u0153\u0154\7\24\2\2"+
-		"\u0154\u0156\3\2\2\2\u0155\u0149\3\2\2\2\u0155\u014a\3\2\2\2\u0156/\3"+
-		"\2\2\2\u0157\u0158\7=\2\2\u0158\u0159\7\26\2\2\u0159\u015c\5(\25\2\u015a"+
-		"\u015c\5(\25\2\u015b\u0157\3\2\2\2\u015b\u015a\3\2\2\2\u015c\61\3\2\2"+
-		"\2\u015d\u015e\7;\2\2\u015e\63\3\2\2\2\u015f\u0163\7=\2\2\u0160\u0162"+
-		"\5\66\34\2\u0161\u0160\3\2\2\2\u0162\u0165\3\2\2\2\u0163\u0161\3\2\2\2"+
-		"\u0163\u0164\3\2\2\2\u0164\65\3\2\2\2\u0165\u0163\3\2\2\2\u0166\u016a"+
-		"\7<\2\2\u0167\u0168\7/\2\2\u0168\u016a\5\64\33\2\u0169\u0166\3\2\2\2\u0169"+
-		"\u0167\3\2\2\2\u016a\67\3\2\2\2\u016b\u016c\7\7\2\2\u016c\u0171\5(\25"+
-		"\2\u016d\u016e\7\33\2\2\u016e\u0170\5(\25\2\u016f\u016d\3\2\2\2\u0170"+
-		"\u0173\3\2\2\2\u0171\u016f\3\2\2\2\u0171\u0172\3\2\2\2\u0172\u0174\3\2"+
-		"\2\2\u0173\u0171\3\2\2\2\u0174\u0175\7\32\2\2\u01759\3\2\2\2\u0176\u0183"+
-		"\7%\2\2\u0177\u0178\7=\2\2\u0178\u0179\7\26\2\2\u0179\u0180\5(\25\2\u017a"+
-		"\u017b\7\33\2\2\u017b\u017c\7=\2\2\u017c\u017d\7\26\2\2\u017d\u017f\5"+
-		"(\25\2\u017e\u017a\3\2\2\2\u017f\u0182\3\2\2\2\u0180\u017e\3\2\2\2\u0180"+
-		"\u0181\3\2\2\2\u0181\u0184\3\2\2\2\u0182\u0180\3\2\2\2\u0183\u0177\3\2"+
-		"\2\2\u0183\u0184\3\2\2\2\u0184\u0185\3\2\2\2\u0185\u0186\7\17\2\2\u0186"+
-		";\3\2\2\2\u0187\u0188\7=\2\2\u0188\u0189\7\26\2\2\u0189\u018a\7;\2\2\u018a"+
-		"=\3\2\2\2%BLR[_bev|\177\u0082\u0087\u008e\u0099\u00a6\u00ae\u00c3\u00cb"+
-		"\u00d1\u00f3\u0109\u0125\u0127\u012e\u013f\u0144\u0146\u0150\u0155\u015b"+
-		"\u0163\u0169\u0171\u0180\u0183";
+		"\u008a\7>\2\2\u008a\23\3\2\2\2\u008b\u008f\7\17\2\2\u008c\u008e\5\26\f"+
+		"\2\u008d\u008c\3\2\2\2\u008e\u0091\3\2\2\2\u008f\u008d\3\2\2\2\u008f\u0090"+
+		"\3\2\2\2\u0090\u0092\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093\7\20\2\2"+
+		"\u0093\25\3\2\2\2\u0094\u009d\5\32\16\2\u0095\u009d\5\34\17\2\u0096\u009d"+
+		"\5&\24\2\u0097\u009d\5\36\20\2\u0098\u009d\5 \21\2\u0099\u009d\5\"\22"+
+		"\2\u009a\u009d\5$\23\2\u009b\u009d\5\30\r\2\u009c\u0094\3\2\2\2\u009c"+
+		"\u0095\3\2\2\2\u009c\u0096\3\2\2\2\u009c\u0097\3\2\2\2\u009c\u0098\3\2"+
+		"\2\2\u009c\u0099\3\2\2\2\u009c\u009a\3\2\2\2\u009c\u009b\3\2\2\2\u009d"+
+		"\27\3\2\2\2\u009e\u009f\7(\2\2\u009f\u00a0\7*\2\2\u00a0\u00a1\7\31\2\2"+
+		"\u00a1\u00a2\5\62\32\2\u00a2\u00a3\5\24\13\2\u00a3\31\3\2\2\2\u00a4\u00a5"+
+		"\7)\2\2\u00a5\u00a7\5\64\33\2\u00a6\u00a8\t\2\2\2\u00a7\u00a6\3\2\2\2"+
+		"\u00a7\u00a8\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00aa\7\31\2\2\u00aa\u00ab"+
+		"\5(\25\2\u00ab\u00ac\7\32\2\2\u00ac\33\3\2\2\2\u00ad\u00af\5\64\33\2\u00ae"+
+		"\u00b0\t\3\2\2\u00af\u00ae\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0\u00b1\3\2"+
+		"\2\2\u00b1\u00b2\7\31\2\2\u00b2\u00b3\5(\25\2\u00b3\u00b4\7\32\2\2\u00b4"+
+		"\35\3\2\2\2\u00b5\u00b7\7#\2\2\u00b6\u00b8\5(\25\2\u00b7\u00b6\3\2\2\2"+
+		"\u00b7\u00b8\3\2\2\2\u00b8\u00b9\3\2\2\2\u00b9\u00ba\7\32\2\2\u00ba\37"+
+		"\3\2\2\2\u00bb\u00bc\7$\2\2\u00bc\u00bd\7\n\2\2\u00bd\u00be\5(\25\2\u00be"+
+		"\u00bf\7\26\2\2\u00bf\u00c4\5\24\13\2\u00c0\u00c1\7%\2\2\u00c1\u00c3\5"+
+		" \21\2\u00c2\u00c0\3\2\2\2\u00c3\u00c6\3\2\2\2\u00c4\u00c2\3\2\2\2\u00c4"+
+		"\u00c5\3\2\2\2\u00c5\u00c9\3\2\2\2\u00c6\u00c4\3\2\2\2\u00c7\u00c8\7%"+
+		"\2\2\u00c8\u00ca\5\24\13\2\u00c9\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca"+
+		"!\3\2\2\2\u00cb\u00cc\7&\2\2\u00cc\u00cf\7\n\2\2\u00cd\u00d0\5\32\16\2"+
+		"\u00ce\u00d0\5\34\17\2\u00cf\u00cd\3\2\2\2\u00cf\u00ce\3\2\2\2\u00d0\u00d1"+
+		"\3\2\2\2\u00d1\u00d2\5(\25\2\u00d2\u00d3\7\32\2\2\u00d3\u00d4\5(\25\2"+
+		"\u00d4\u00d5\7\26\2\2\u00d5\u00d6\5\24\13\2\u00d6\u00e0\3\2\2\2\u00d7"+
+		"\u00d8\7&\2\2\u00d8\u00d9\7\n\2\2\u00d9\u00da\5\64\33\2\u00da\u00db\7"+
+		"9\2\2\u00db\u00dc\5(\25\2\u00dc\u00dd\7\26\2\2\u00dd\u00de\5\24\13\2\u00de"+
+		"\u00e0\3\2\2\2\u00df\u00cb\3\2\2\2\u00df\u00d7\3\2\2\2\u00e0#\3\2\2\2"+
+		"\u00e1\u00e2\7\'\2\2\u00e2\u00e3\7\n\2\2\u00e3\u00e4\5(\25\2\u00e4\u00e5"+
+		"\7\26\2\2\u00e5\u00e6\5\24\13\2\u00e6%\3\2\2\2\u00e7\u00e8\5(\25\2\u00e8"+
+		"\u00e9\7\32\2\2\u00e9\'\3\2\2\2\u00ea\u00eb\b\25\1\2\u00eb\u00ec\78\2"+
+		"\2\u00ec\u00f3\5(\25\2\u00ed\u00ee\t\4\2\2\u00ee\u00f3\5(\25\2\u00ef\u00f0"+
+		"\t\5\2\2\u00f0\u00f3\5(\25\2\u00f1\u00f3\5*\26\2\u00f2\u00ea\3\2\2\2\u00f2"+
+		"\u00ed\3\2\2\2\u00f2\u00ef\3\2\2\2\u00f2\u00f1\3\2\2\2\u00f3\u0140\3\2"+
+		"\2\2\u00f4\u00f5\6\25\2\3\u00f5\u00f6\t\6\2\2\u00f6\u013f\5(\25\2\u00f7"+
+		"\u00f8\6\25\3\3\u00f8\u00f9\t\7\2\2\u00f9\u013f\5(\25\2\u00fa\u00ff\6"+
+		"\25\4\3\u00fb\u00fc\7\f\2\2\u00fc\u0100\7\f\2\2\u00fd\u00fe\7\36\2\2\u00fe"+
+		"\u0100\7\36\2\2\u00ff\u00fb\3\2\2\2\u00ff\u00fd\3\2\2\2\u0100\u0101\3"+
+		"\2\2\2\u0101\u013f\5(\25\2\u0102\u010d\6\25\5\3\u0103\u010e\7\f\2\2\u0104"+
+		"\u010e\7\36\2\2\u0105\u0106\7\f\2\2\u0106\u010e\7\31\2\2\u0107\u0108\7"+
+		"\36\2\2\u0108\u010e\7\31\2\2\u0109\u010e\7-\2\2\u010a\u010e\7/\2\2\u010b"+
+		"\u010e\7.\2\2\u010c\u010e\7\60\2\2\u010d\u0103\3\2\2\2\u010d\u0104\3\2"+
+		"\2\2\u010d\u0105\3\2\2\2\u010d\u0107\3\2\2\2\u010d\u0109\3\2\2\2\u010d"+
+		"\u010a\3\2\2\2\u010d\u010b\3\2\2\2\u010d\u010c\3\2\2\2\u010e\u010f\3\2"+
+		"\2\2\u010f\u013f\5(\25\2\u0110\u011a\6\25\6\3\u0111\u0112\7\"\2\2\u0112"+
+		"\u011b\7\31\2\2\u0113\u0114\7\31\2\2\u0114\u011b\7\31\2\2\u0115\u011b"+
+		"\7\61\2\2\u0116\u011b\7\62\2\2\u0117\u011b\7\64\2\2\u0118\u0119\7\64\2"+
+		"\2\u0119\u011b\7\63\2\2\u011a\u0111\3\2\2\2\u011a\u0113\3\2\2\2\u011a"+
+		"\u0115\3\2\2\2\u011a\u0116\3\2\2\2\u011a\u0117\3\2\2\2\u011a\u0118\3\2"+
+		"\2\2\u011b\u011c\3\2\2\2\u011c\u013f\5(\25\2\u011d\u011e\6\25\7\3\u011e"+
+		"\u011f\t\b\2\2\u011f\u013f\5(\25\2\u0120\u0121\6\25\b\3\u0121\u0122\7"+
+		"\24\2\2\u0122\u013f\5(\25\2\u0123\u0124\6\25\t\3\u0124\u0125\7!\2\2\u0125"+
+		"\u013f\5(\25\2\u0126\u0127\6\25\n\3\u0127\u0128\7\33\2\2\u0128\u013f\5"+
+		"(\25\2\u0129\u012a\6\25\13\3\u012a\u012b\7\35\2\2\u012b\u013f\5(\25\2"+
+		"\u012c\u012d\6\25\f\3\u012d\u012e\7\16\2\2\u012e\u012f\5(\25\2\u012f\u0130"+
+		"\7\13\2\2\u0130\u0131\5(\25\2\u0131\u013f\3\2\2\2\u0132\u0133\6\25\r\3"+
+		"\u0133\u0134\7\27\2\2\u0134\u013f\5,\27\2\u0135\u0136\6\25\16\3\u0136"+
+		"\u0137\7\t\2\2\u0137\u0138\5(\25\2\u0138\u0139\7\3\2\2\u0139\u013f\3\2"+
+		"\2\2\u013a\u013b\6\25\17\3\u013b\u013f\5.\30\2\u013c\u013d\6\25\20\3\u013d"+
+		"\u013f\t\t\2\2\u013e\u00f4\3\2\2\2\u013e\u00f7\3\2\2\2\u013e\u00fa\3\2"+
+		"\2\2\u013e\u0102\3\2\2\2\u013e\u0110\3\2\2\2\u013e\u011d\3\2\2\2\u013e"+
+		"\u0120\3\2\2\2\u013e\u0123\3\2\2\2\u013e\u0126\3\2\2\2\u013e\u0129\3\2"+
+		"\2\2\u013e\u012c\3\2\2\2\u013e\u0132\3\2\2\2\u013e\u0135\3\2\2\2\u013e"+
+		"\u013a\3\2\2\2\u013e\u013c\3\2\2\2\u013f\u0142\3\2\2\2\u0140\u013e\3\2"+
+		"\2\2\u0140\u0141\3\2\2\2\u0141)\3\2\2\2\u0142\u0140\3\2\2\2\u0143\u0144"+
+		"\7\n\2\2\u0144\u0145\5(\25\2\u0145\u0146\7\26\2\2\u0146\u014a\3\2\2\2"+
+		"\u0147\u014a\5\60\31\2\u0148\u014a\7>\2\2\u0149\u0143\3\2\2\2\u0149\u0147"+
+		"\3\2\2\2\u0149\u0148\3\2\2\2\u014a+\3\2\2\2\u014b\u014c\t\n\2\2\u014c"+
+		"-\3\2\2\2\u014d\u016b\7\5\2\2\u014e\u0150\7\n\2\2\u014f\u0151\5(\25\2"+
+		"\u0150\u014f\3\2\2\2\u0150\u0151\3\2\2\2\u0151\u0156\3\2\2\2\u0152\u0153"+
+		"\7\6\2\2\u0153\u0155\5(\25\2\u0154\u0152\3\2\2\2\u0155\u0158\3\2\2\2\u0156"+
+		"\u0154\3\2\2\2\u0156\u0157\3\2\2\2\u0157\u0159\3\2\2\2\u0158\u0156\3\2"+
+		"\2\2\u0159\u016b\7\26\2\2\u015a\u015b\7\n\2\2\u015b\u015c\5,\27\2\u015c"+
+		"\u015d\7\31\2\2\u015d\u0165\5(\25\2\u015e\u015f\7\6\2\2\u015f\u0160\5"+
+		",\27\2\u0160\u0161\7\31\2\2\u0161\u0162\5(\25\2\u0162\u0164\3\2\2\2\u0163"+
+		"\u015e\3\2\2\2\u0164\u0167\3\2\2\2\u0165\u0163\3\2\2\2\u0165\u0166\3\2"+
+		"\2\2\u0166\u0168\3\2\2\2\u0167\u0165\3\2\2\2\u0168\u0169\7\26\2\2\u0169"+
+		"\u016b\3\2\2\2\u016a\u014d\3\2\2\2\u016a\u014e\3\2\2\2\u016a\u015a\3\2"+
+		"\2\2\u016b/\3\2\2\2\u016c\u0174\58\35\2\u016d\u0174\5:\36\2\u016e\u0174"+
+		"\5> \2\u016f\u0174\7;\2\2\u0170\u0174\7:\2\2\u0171\u0174\7<\2\2\u0172"+
+		"\u0174\7=\2\2\u0173\u016c\3\2\2\2\u0173\u016d\3\2\2\2\u0173\u016e\3\2"+
+		"\2\2\u0173\u016f\3\2\2\2\u0173\u0170\3\2\2\2\u0173\u0171\3\2\2\2\u0173"+
+		"\u0172\3\2\2\2\u0174\61\3\2\2\2\u0175\u0176\t\13\2\2\u0176\63\3\2\2\2"+
+		"\u0177\u0178\b\33\1\2\u0178\u0179\5\66\34\2\u0179\u0184\3\2\2\2\u017a"+
+		"\u017b\6\33\21\3\u017b\u017c\7\27\2\2\u017c\u0183\5,\27\2\u017d\u017e"+
+		"\6\33\22\3\u017e\u017f\7\t\2\2\u017f\u0180\5(\25\2\u0180\u0181\7\3\2\2"+
+		"\u0181\u0183\3\2\2\2\u0182\u017a\3\2\2\2\u0182\u017d\3\2\2\2\u0183\u0186"+
+		"\3\2\2\2\u0184\u0182\3\2\2\2\u0184\u0185\3\2\2\2\u0185\65\3\2\2\2\u0186"+
+		"\u0184\3\2\2\2\u0187\u0188\7>\2\2\u0188\67\3\2\2\2\u0189\u0192\7\t\2\2"+
+		"\u018a\u018f\5(\25\2\u018b\u018c\7\6\2\2\u018c\u018e\5(\25\2\u018d\u018b"+
+		"\3\2\2\2\u018e\u0191\3\2\2\2\u018f\u018d\3\2\2\2\u018f\u0190\3\2\2\2\u0190"+
+		"\u0193\3\2\2\2\u0191\u018f\3\2\2\2\u0192\u018a\3\2\2\2\u0192\u0193\3\2"+
+		"\2\2\u0193\u0194\3\2\2\2\u0194\u0197\7\3\2\2\u0195\u0197\7\23\2\2\u0196"+
+		"\u0189\3\2\2\2\u0196\u0195\3\2\2\2\u01979\3\2\2\2\u0198\u01a5\7\17\2\2"+
+		"\u0199\u019a\7>\2\2\u019a\u019b\7\31\2\2\u019b\u01a2\5(\25\2\u019c\u019d"+
+		"\7\6\2\2\u019d\u019e\7>\2\2\u019e\u019f\7\31\2\2\u019f\u01a1\5(\25\2\u01a0"+
+		"\u019c\3\2\2\2\u01a1\u01a4\3\2\2\2\u01a2\u01a0\3\2\2\2\u01a2\u01a3\3\2"+
+		"\2\2\u01a3\u01a6\3\2\2\2\u01a4\u01a2\3\2\2\2\u01a5\u0199\3\2\2\2\u01a5"+
+		"\u01a6\3\2\2\2\u01a6\u01a7\3\2\2\2\u01a7\u01aa\7\20\2\2\u01a8\u01aa\7"+
+		"\34\2\2\u01a9\u0198\3\2\2\2\u01a9\u01a8\3\2\2\2\u01aa;\3\2\2\2\u01ab\u01ac"+
+		"\7>\2\2\u01ac\u01ad\7\31\2\2\u01ad\u01ae\t\f\2\2\u01ae=\3\2\2\2\u01af"+
+		"\u01b0\t\r\2\2\u01b0?\3\2\2\2+DNT]adgv|\177\u0082\u0087\u008f\u009c\u00a7"+
+		"\u00af\u00b7\u00c4\u00c9\u00cf\u00df\u00f2\u00ff\u010d\u011a\u013e\u0140"+
+		"\u0149\u0150\u0156\u0165\u016a\u0173\u0182\u0184\u018f\u0192\u0196\u01a2"+
+		"\u01a5\u01a9";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

@@ -15,26 +15,26 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
 	void exitArrayLiteral(CfscriptParser.ArrayLiteralContext ctx);
 
+	void enterVariableNameFirst(CfscriptParser.VariableNameFirstContext ctx);
+	void exitVariableNameFirst(CfscriptParser.VariableNameFirstContext ctx);
+
 	void enterVariableStatement(CfscriptParser.VariableStatementContext ctx);
 	void exitVariableStatement(CfscriptParser.VariableStatementContext ctx);
 
 	void enterForStatement(CfscriptParser.ForStatementContext ctx);
 	void exitForStatement(CfscriptParser.ForStatementContext ctx);
 
+	void enterValidSecond(CfscriptParser.ValidSecondContext ctx);
+	void exitValidSecond(CfscriptParser.ValidSecondContext ctx);
+
 	void enterVariableName(CfscriptParser.VariableNameContext ctx);
 	void exitVariableName(CfscriptParser.VariableNameContext ctx);
-
-	void enterMethodCall(CfscriptParser.MethodCallContext ctx);
-	void exitMethodCall(CfscriptParser.MethodCallContext ctx);
 
 	void enterExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
 	void exitExpressionStatement(CfscriptParser.ExpressionStatementContext ctx);
 
 	void enterPropertyDeclaration(CfscriptParser.PropertyDeclarationContext ctx);
 	void exitPropertyDeclaration(CfscriptParser.PropertyDeclarationContext ctx);
-
-	void enterVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
-	void exitVariableSuffix(CfscriptParser.VariableSuffixContext ctx);
 
 	void enterReturnStatement(CfscriptParser.ReturnStatementContext ctx);
 	void exitReturnStatement(CfscriptParser.ReturnStatementContext ctx);
@@ -45,8 +45,14 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterComponent(CfscriptParser.ComponentContext ctx);
 	void exitComponent(CfscriptParser.ComponentContext ctx);
 
+	void enterExpressionFirst(CfscriptParser.ExpressionFirstContext ctx);
+	void exitExpressionFirst(CfscriptParser.ExpressionFirstContext ctx);
+
 	void enterArgumentName(CfscriptParser.ArgumentNameContext ctx);
 	void exitArgumentName(CfscriptParser.ArgumentNameContext ctx);
+
+	void enterExpressionMethod(CfscriptParser.ExpressionMethodContext ctx);
+	void exitExpressionMethod(CfscriptParser.ExpressionMethodContext ctx);
 
 	void enterSaveContentStatement(CfscriptParser.SaveContentStatementContext ctx);
 	void exitSaveContentStatement(CfscriptParser.SaveContentStatementContext ctx);
@@ -57,6 +63,9 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx);
 	void exitArgumentsDefinition(CfscriptParser.ArgumentsDefinitionContext ctx);
 
+	void enterBooleanLiteral(CfscriptParser.BooleanLiteralContext ctx);
+	void exitBooleanLiteral(CfscriptParser.BooleanLiteralContext ctx);
+
 	void enterComponentElement(CfscriptParser.ComponentElementContext ctx);
 	void exitComponentElement(CfscriptParser.ComponentElementContext ctx);
 
@@ -66,17 +75,11 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterStatement(CfscriptParser.StatementContext ctx);
 	void exitStatement(CfscriptParser.StatementContext ctx);
 
-	void enterExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx);
-	void exitExpressionItemSuffix(CfscriptParser.ExpressionItemSuffixContext ctx);
-
 	void enterArgumentDefinition(CfscriptParser.ArgumentDefinitionContext ctx);
 	void exitArgumentDefinition(CfscriptParser.ArgumentDefinitionContext ctx);
 
 	void enterWhileStatement(CfscriptParser.WhileStatementContext ctx);
 	void exitWhileStatement(CfscriptParser.WhileStatementContext ctx);
-
-	void enterExpressionItem(CfscriptParser.ExpressionItemContext ctx);
-	void exitExpressionItem(CfscriptParser.ExpressionItemContext ctx);
 
 	void enterFunctionDeclaration(CfscriptParser.FunctionDeclarationContext ctx);
 	void exitFunctionDeclaration(CfscriptParser.FunctionDeclarationContext ctx);
@@ -90,6 +93,6 @@ public interface CfscriptListener extends ParseTreeListener {
 	void enterKeyValue(CfscriptParser.KeyValueContext ctx);
 	void exitKeyValue(CfscriptParser.KeyValueContext ctx);
 
-	void enterMethodArgument(CfscriptParser.MethodArgumentContext ctx);
-	void exitMethodArgument(CfscriptParser.MethodArgumentContext ctx);
+	void enterLiteral(CfscriptParser.LiteralContext ctx);
+	void exitLiteral(CfscriptParser.LiteralContext ctx);
 }

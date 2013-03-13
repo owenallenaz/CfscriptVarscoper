@@ -17,6 +17,7 @@ public class ComponentFunction {
 		varred.put("variables", true);
 		varred.put("arguments", true);
 		varred.put("local", true);
+		varred.put("url", true);
 	}
 	
 	public boolean hasUnvarred() {

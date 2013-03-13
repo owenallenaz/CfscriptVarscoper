@@ -33,22 +33,27 @@ component {
 	}
 	
 	public function handler_processRequest(struct rc) {
+		local.start = getTickCount();
+		local.pass = {};
+		
 		if (ReFind("\\$", arguments.rc.path)) {
 			if (!DirectoryExists(arguments.rc.path)) {
 				return handler_home({ errorMessage = "Directory #arguments.rc.path# was not found." });
 			}
 			
-			local.html = processFolder(arguments.rc.path);
+			local.pass.data = processFolder(arguments.rc.path);
 		} else {
 			if (!FileExists(arguments.rc.path)) {
 				return handler_home({ errorMessage = "File #arguments.rc.path# was not found." });
 			}
 			
-			
 			writeOutput("file processing not written yet");
 		}
 		
-		return templateResult("container.cfm", { html = local.html });
+		local.pass.duration = getTickCount() - local.start;
+		local.pass.path = arguments.rc.path;
+		
+		return templateResult("container.cfm", { html = templateResult("results.cfm", local.pass) });
 	}
 	
 	public function processFile(required string path) {
@@ -86,13 +91,12 @@ component {
 			});
 		}
 		
-		return templateResult("results.cfm", local.pass);
+		return local.pass;
 	}
 	
 	public function processString(required string data) {
 		return variables.processor.process(arguments.data);
 	}
-	
 	
 	public function templateResult(required string template, struct pass = {}) {
 		local.pass = arguments.pass;

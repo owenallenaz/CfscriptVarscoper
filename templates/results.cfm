@@ -1,7 +1,9 @@
 <cfoutput>
 	<div class="results">
 		<h2>Results</h2>
-		<cfloop array="#local.pass.data#" index="local.i">
+		<p>Path: <b>#local.pass.path#</b></p>
+		<p>Duration: <b>#local.pass.duration#ms</b></p>
+		<cfloop array="#local.pass.data.data#" index="local.i">
 			<div class="component <cfif local.i.component.hasUnvarred()>hasUnvarred open</cfif>">
 				<div class="topLine">
 					<button class="openButton btn btn-mini">
@@ -24,7 +26,7 @@
 						<tbody>
 							<cfloop list="#StructKeyList(local.i.component.functions)#" index="local.j">
 								<cfset local.c = local.i.component.functions[local.j]>
-								<tr class="<cfif local.c.hasUnvarred()>hasUnvarred error</cfif>">
+								<tr class="<cfif local.c.hasUnvarred()>hasUnvarred error<cfelse>success</cfif>">
 									<td>
 										<cfif local.c.hasUnvarred()>
 											<i class="icon-exclamation-sign"></i>

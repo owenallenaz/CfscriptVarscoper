@@ -7,7 +7,7 @@
 			</div>
 		</cfif>
 		<form method="get">
-			<label>Absolute path to folder of file to test: (e.g. D:\inetpub\site1\test\)<br/><b>If you are specifying a folder you must specify a trailing slash!</b></label>
+			<p>Absolute path to folder or file to test: (e.g. D:\inetpub\site1\test\)<br/><b>If you are specifying a folder you must specify a trailing slash!</b></p>
 			<input type="text" name="path" placeholder="path" class="input-xxlarge"/>
 			<input type="hidden" name="action" value="processRequest"/>
 			<br/>

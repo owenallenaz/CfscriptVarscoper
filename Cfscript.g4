@@ -20,7 +20,7 @@ propertyDeclaration
 	;
 
 functionDeclaration
-	: Identifier? Identifier? 'function' functionName argumentsDefinition functionBody
+	: Identifier? Identifier? K_Function functionName argumentsDefinition functionBody
 	;
 
 functionName
@@ -37,7 +37,13 @@ argumentDefinition
 	; 
 
 argumentName
-	: Identifier
+	: K_Variable
+	| K_Component
+	| K_Var
+	| K_Variable
+	| K_Savecontent
+	| K_Function
+	| Identifier
 	;
 
 functionBody
@@ -60,11 +66,11 @@ saveContentStatement
 	;
 
 variableStatement
-	: K_Var variableName ('&'|'+')? '=' expression ';'
+	: K_Var variableName ('&'|'+'|'-')? '=' expression ';'
 	;
 
 nonVarVariableStatement
-	: variableName ('&'|'+')? '=' expression ';'
+	: variableName ('&'|'+'|'-')? '=' expression ';'
 	;
 
 returnStatement
@@ -102,11 +108,11 @@ expression
 	| expression ('<''<'|'>''>') expression
 	| expression ('<'|'>'|'<''='|'>''='|K_Gt|K_Gte|K_Lt|K_Lte) expression
 	| expression ('!''='|'=''='|K_Eq|K_Neq|K_Is|K_Is K_Not) expression
-	| expression ('&'|K_And) expression
+	| expression '&' expression
 	| expression '^' expression
 	| expression '|' expression
-	| expression '&&' expression
-	| expression '||' expression
+	| expression ('&&'|K_And) expression
+	| expression ('||'|K_Or) expression
 	| expression '?' expression ':' expression
 	;
 
@@ -134,9 +140,12 @@ validSecond
 	| K_Not
 	| K_Is
 	| K_And
+	| K_Or
 	| K_True
 	| K_False
 	| K_New
+	| K_Variable
+	| K_Function
 	| Identifier
 	;
 
@@ -195,6 +204,7 @@ K_Var : ('v'|'V')('a'|'A')('r'|'R');
 K_Variable : ('v'|'V')('a'|'A')('r'|'R')('i'|'I')('a'|'A')('b'|'B')('l'|'L')('e'|'E');
 K_Component : ('c'|'C')('o'|'O')('m'|'M')('p'|'P')('o'|'O')('n'|'N')('e'|'E')('n'|'N')('t'|'T');
 K_Property : ('p'|'P')('r'|'R')('o'|'O')('p'|'P')('e'|'E')('r'|'R')('t'|'T')('y'|'Y');
+K_Function : ('f'|'F')('u'|'U')('n'|'N')('c'|'C')('t'|'T')('i'|'I')('o'|'O')('n'|'N');
 K_Gt : ('g'|'G')('t'|'T');
 K_Lt : ('l'|'L')('t'|'T');
 K_Gte : ('g'|'G')('t'|'T')('e'|'E');
@@ -204,6 +214,7 @@ K_Neq : ('n'|'N')('e'|'E')('q'|'Q');
 K_Not : ('n'|'N')('o'|'O')('t'|'T');
 K_Is : ('i'|'I')('s'|'S');
 K_And : ('a'|'A')('n'|'N')('d'|'D');
+K_Or : ('o'|'O')('r'|'R');
 K_True : ('t'|'T')('r'|'R')('u'|'U')('e'|'E');
 K_False : ('f'|'F')('a'|'A')('l'|'L')('s'|'S')('e'|'E');
 K_New : ('n'|'N')('e'|'E')('w'|'W');
@@ -250,7 +261,7 @@ Digit
 	;
 
 WS
-	: [ \t\r\n]+ -> channel(HIDDEN) 
+	: [ \t\r\n]+ -> skip
 	;
 
 COMMENT

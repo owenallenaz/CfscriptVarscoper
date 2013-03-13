@@ -10,7 +10,7 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 
 	@Override 
 	public void enterArgumentDefinition(CfscriptParser.ArgumentDefinitionContext ctx) {
-		String varName = ctx.argumentName().Identifier().getText();
+		String varName = ctx.argumentName().getText();
 		functions.get(currentFunction).varred.put(varName, true);
 	}
 
@@ -20,7 +20,7 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 			return;
 		}
 		
-		String varName = ctx.variableName().Identifier().getText();
+		String varName = getScope(ctx.variableName().getText());
 		if (!functions.get(currentFunction).varred.containsKey(varName)) {
 			functions.get(currentFunction).varred.put(varName, true);
 		}
@@ -31,8 +31,8 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 		if (currentFunction == null) {
 			return;
 		}
-
-		String varName = ctx.variableName().Identifier().getText();
+		
+		String varName = getScope(ctx.variableName().getText());
 		checkVar(varName);
 	}
 
@@ -65,6 +65,10 @@ public class CfscriptCustomListener extends CfscriptBaseListener {
 		if (!functions.get(currentFunction).varred.containsKey(varName)) {
 			functions.get(currentFunction).unvarred.put(varName, true);
 		}
+	}
+	
+	private String getScope(String varName) {
+		return varName.replaceAll("(\\.|\\[|\\().*", "");
 	}
 	
 	public boolean hasUnvarred() {
